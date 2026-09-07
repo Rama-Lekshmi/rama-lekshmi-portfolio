@@ -1,0 +1,3374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rama Lekshmi — Designer • Developer • Artist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Patrick+Hand&family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --cream: #FBF5EA;
+      --paper: #FFFDF7;
+      --paper2: #F1E7D4;
+      --ink: #3E3540;
+      --muted: #6B5F6E;
+      --pink: #E7AEB4;
+      --pinkDeep: #D9838F;
+      --lav: #C9B8E0;
+      --lavDeep: #A98FCB;
+      --peach: #F0C093;
+      --butter: #F2D473;
+      --blue: #A7C6DA;
+      --green: #AECB9C;
+      --night: #2D2631;
+      --line: rgba(62, 53, 64, .14);
+      --hand: 'Caveat', cursive;
+      --note: 'Patrick Hand', cursive;
+      --body: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html {
+      scroll-behavior: smooth
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--body);
+      line-height: 1.55;
+      overflow-x: hidden;
+      cursor: none
+    }
+
+    a {
+      color: inherit
+    }
+
+    button {
+      font: inherit
+    }
+
+    img,
+    svg {
+      display: block;
+      max-width: 100%
+    }
+
+    body:before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1000;
+      opacity: .35;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.025'/%3E%3C/svg%3E")
+    }
+
+    /* cursor */
+    #cursor,
+    #cursorRing {
+      position: fixed;
+      pointer-events: none;
+      z-index: 2000;
+      transform: translate(-50%, -50%)
+    }
+
+    #cursor {
+      width: 8px;
+      height: 8px;
+      background: var(--pinkDeep);
+      border-radius: 50%
+    }
+
+    #cursorRing {
+      width: 32px;
+      height: 32px;
+      border: 1.5px solid rgba(217, 131, 143, .55);
+      border-radius: 50%;
+      transition: width .25s, height .25s, border-color .25s, opacity .25s
+    }
+
+    .cursorText {
+      position: fixed;
+      pointer-events: none;
+      z-index: 1999;
+      font: 14px var(--note);
+      opacity: 0;
+      transform: translate(12px, 10px);
+      transition: opacity .2s
+    }
+
+    body.hovering #cursorRing {
+      width: 48px;
+      height: 48px;
+      border-color: var(--lavDeep)
+    }
+
+    /* progress */
+    #progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0;
+      background: linear-gradient(90deg, var(--pinkDeep), var(--lavDeep), var(--green));
+      z-index: 2100
+    }
+
+    /* nav */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: rgba(251, 245, 234, .9);
+      backdrop-filter: blur(16px);
+      padding: 14px 28px 0
+    }
+
+    .navInner {
+      max-width: 1180px;
+      margin: auto;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--ink);
+      gap: 18px
+    }
+
+    .brand {
+      font: 700 1.8rem var(--hand);
+      text-decoration: none;
+      padding-bottom: 10px;
+      white-space: nowrap
+    }
+
+    .brand small {
+      display: block;
+      font: 1rem var(--note);
+      letter-spacing: .04em;
+      color: var(--muted);
+      margin-top: -7px
+    }
+
+    .tabs {
+      display: flex;
+      gap: 6px;
+      overflow-x: auto;
+      scrollbar-width: none
+    }
+
+    .tabs::-webkit-scrollbar {
+      display: none
+    }
+
+    .tabs a {
+      font: 1.03rem var(--note);
+      text-decoration: none;
+      background: var(--paper);
+      border: 2px solid var(--ink);
+      border-bottom: 0;
+      border-radius: 10px 10px 0 0;
+      padding: 8px 16px 10px;
+      position: relative;
+      top: 2px;
+      white-space: nowrap;
+      transition: .2s
+    }
+
+    .tabs a:nth-child(odd) {
+      transform: rotate(-1deg)
+    }
+
+    .tabs a:nth-child(even) {
+      transform: rotate(1deg)
+    }
+
+    .tabs a:hover {
+      background: var(--butter);
+      transform: translateY(-3px) rotate(0)
+    }
+
+    /* common */
+    .wrap {
+      max-width: 1180px;
+      margin: auto;
+      padding: 0 28px
+    }
+
+    .section {
+      padding: 96px 0;
+      position: relative
+    }
+
+    .section.alt {
+      background: var(--paper2)
+    }
+
+    .eyebrow {
+      font: 1.05rem var(--note);
+      color: var(--muted)
+    }
+
+    .title {
+      font: 700 clamp(2.7rem, 5vw, 4.2rem) var(--hand);
+      line-height: .95;
+      margin: .15em 0 .25em
+    }
+
+    .lede {
+      max-width: 590px;
+      color: var(--muted)
+    }
+
+    /* hero */
+    .hero {
+      min-height: calc(100vh - 70px);
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      align-items: center;
+      gap: 55px;
+      position: relative;
+      overflow: hidden;
+      padding: 72px 0 58px
+    }
+
+    .aurora {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(70px);
+      pointer-events: none;
+      opacity: .55;
+      animation: drift 12s ease-in-out infinite
+    }
+
+    .a1 {
+      width: 420px;
+      height: 350px;
+      background: radial-gradient(circle, rgba(231, 174, 180, .38), transparent 70%);
+      right: -80px;
+      top: -80px
+    }
+
+    .a2 {
+      width: 360px;
+      height: 340px;
+      background: radial-gradient(circle, rgba(201, 184, 224, .38), transparent 70%);
+      left: -80px;
+      bottom: -80px;
+      animation-delay: 4s
+    }
+
+    .a3 {
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(174, 203, 156, .25), transparent 70%);
+      left: 45%;
+      top: 40%;
+      animation-delay: 8s
+    }
+
+    @keyframes drift {
+
+      0%,
+      100% {
+        transform: translate(0, 0) scale(1)
+      }
+
+      50% {
+        transform: translate(20px, -18px) scale(1.04)
+      }
+    }
+
+    .heroCopy {
+      position: relative;
+      z-index: 2
+    }
+
+    .availability {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      background: var(--paper);
+      border: 2px solid var(--ink);
+      border-radius: 100px;
+      padding: 6px 14px;
+      font-size: .76rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      transform: rotate(-1deg);
+      margin-bottom: 22px
+    }
+
+    .availability i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #7EAD68;
+      display: block
+    }
+
+    .hero h1 {
+      font: 700 clamp(4rem, 8vw, 7rem) var(--hand);
+      line-height: .83;
+      margin: 0
+    }
+
+    .hero h1 span {
+      color: var(--pinkDeep)
+    }
+
+    .role {
+      font-weight: 700;
+      font-size: 1.15rem;
+      margin: 22px 0 14px
+    }
+
+    .role b {
+      color: var(--lavDeep);
+      font-weight: 700
+    }
+
+    .heroDesc {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 1.03rem
+    }
+
+    .ctaRow {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 2px solid var(--ink);
+      border-radius: 12px;
+      padding: 12px 22px;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 3px 4px 0 var(--ink);
+      transition: .18s
+    }
+
+    .btn:hover {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 6px 0 var(--ink)
+    }
+
+    .btnPrimary {
+      background: var(--pinkDeep);
+      color: #fff
+    }
+
+    .btnSecondary {
+      background: var(--paper)
+    }
+
+    /* hero creative card */
+    .heroVisual {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      z-index: 2
+    }
+
+    .flipStage {
+      width: min(390px, 88vw);
+      height: 440px;
+      perspective: 1200px;
+      cursor: pointer;
+      position: relative
+    }
+
+    .flipCard {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform .8s cubic-bezier(.2, .8, .2, 1)
+    }
+
+    .flipStage.flipped .flipCard {
+      transform: rotateY(180deg)
+    }
+
+    .face {
+      position: absolute;
+      inset: 0;
+      backface-visibility: hidden;
+      border: 2px solid var(--ink);
+      border-radius: 22px;
+      background: var(--paper);
+      box-shadow: 0 20px 45px rgba(62, 53, 64, .14);
+      padding: 24px;
+      overflow: hidden
+    }
+
+    .face.back {
+      transform: rotateY(180deg);
+      background: var(--night);
+      color: var(--cream)
+    }
+
+    .faceHeader {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font: 1rem var(--note)
+    }
+
+    .tinyTag {
+      border: 1.5px solid currentColor;
+      border-radius: 100px;
+      padding: 4px 10px;
+      font-size: .75rem
+    }
+
+    .labArt {
+      height: 300px;
+      display: grid;
+      place-items: center;
+      position: relative
+    }
+
+    .labArt .orb {
+      width: 210px;
+      height: 210px;
+      border-radius: 48% 52% 50% 46%;
+      background: linear-gradient(145deg, var(--lav), var(--pink));
+      border: 2px solid var(--ink);
+      transform: rotate(-7deg);
+      box-shadow: 12px 14px 0 rgba(62, 53, 64, .08)
+    }
+
+    .labArt .orb:before {
+      content: '✦';
+      position: absolute;
+      font-size: 52px;
+      left: 72px;
+      top: 70px;
+      color: var(--cream)
+    }
+
+    .labArt .orb:after {
+      content: 'UI  +  CODE';
+      position: absolute;
+      left: 46px;
+      bottom: 42px;
+      font: 700 18px var(--note);
+      letter-spacing: .08em
+    }
+
+    .sticker {
+      position: absolute;
+      background: var(--paper);
+      border: 1.5px solid var(--ink);
+      border-radius: 10px;
+      padding: 7px 12px;
+      font: 14px var(--note);
+      box-shadow: 3px 4px 0 rgba(62, 53, 64, .1);
+      animation: float 4s ease-in-out infinite
+    }
+
+    .s1 {
+      top: 54px;
+      right: 24px;
+      transform: rotate(4deg)
+    }
+
+    .s2 {
+      bottom: 70px;
+      left: 18px;
+      transform: rotate(-5deg);
+      animation-delay: 1s
+    }
+
+    .s3 {
+      top: 180px;
+      left: 10px;
+      transform: rotate(-2deg);
+      animation-delay: 2s
+    }
+
+    @keyframes float {
+      50% {
+        translate: 0 -8px
+      }
+    }
+
+    .faceFoot {
+      font: 1rem var(--note);
+      color: var(--muted);
+      text-align: center
+    }
+
+    .back .faceFoot {
+      color: #d9d0dc
+    }
+
+    .backList {
+      display: grid;
+      gap: 14px;
+      margin-top: 30px
+    }
+
+    .backItem {
+      border: 1px solid rgba(255, 255, 255, .18);
+      border-radius: 14px;
+      padding: 13px 15px;
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      font-size: .9rem
+    }
+
+    .backItem span:last-child {
+      color: #E7AEB4
+    }
+
+    .flipHint {
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font: 1rem var(--note);
+      color: var(--pinkDeep);
+      white-space: nowrap
+    }
+
+    /* section headings */
+    .sectionHead {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 20px;
+      margin-bottom: 48px;
+      flex-wrap: wrap
+    }
+
+    .sectionNumber {
+      font: 5rem var(--hand);
+      color: rgba(62, 53, 64, .07);
+      line-height: .7
+    }
+
+    /* design cards */
+    .designGrid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 34px
+    }
+
+    .designCard {
+      background: var(--cream);
+      border: 2px solid var(--ink);
+      border-radius: 15px;
+      padding: 18px;
+      box-shadow: 0 10px 24px rgba(62, 53, 64, .09);
+      position: relative;
+      transition: .25s
+    }
+
+    .designCard:nth-child(1) {
+      transform: rotate(-1deg)
+    }
+
+    .designCard:nth-child(2) {
+      transform: rotate(1deg)
+    }
+
+    .designCard:nth-child(3) {
+      transform: rotate(-.7deg)
+    }
+
+    .designCard:nth-child(4) {
+      transform: rotate(.8deg)
+    }
+
+    .designCard:hover {
+      transform: translateY(-7px) rotate(0);
+      box-shadow: 0 20px 34px rgba(62, 53, 64, .15)
+    }
+
+    .tape {
+      position: absolute;
+      width: 75px;
+      height: 23px;
+      top: -12px;
+      left: 25px;
+      opacity: .8;
+      border-radius: 2px;
+      transform: rotate(-5deg);
+      background: var(--pink)
+    }
+
+    .preview {
+      aspect-ratio: 16/10;
+      border: 1.5px solid var(--ink);
+      border-radius: 9px;
+      overflow: hidden;
+      background: #eee;
+      position: relative
+    }
+
+    .preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    .previewPlaceholder {
+      height: 100%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--lav), var(--peach));
+      font: 700 1.2rem var(--note);
+      color: var(--ink);
+      text-align: center;
+      padding: 20px
+    }
+
+    .projectInfo {
+      padding: 14px 3px 2px
+    }
+
+    .projectTitle {
+      font: 700 1.8rem var(--hand);
+      margin: 0
+    }
+
+    .projectType {
+      font-size: .74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--muted)
+    }
+
+    .projectDesc {
+      color: var(--muted);
+      font-size: .92rem;
+      margin: 5px 0 12px
+    }
+
+    .chips {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap
+    }
+
+    .chip {
+      border: 1.4px solid var(--ink);
+      background: var(--paper);
+      border-radius: 100px;
+      padding: 4px 9px;
+      font-size: .72rem;
+      font-weight: 700
+    }
+
+    .projectLinks {
+      display: flex;
+      gap: 12px;
+      margin-top: 14px;
+      flex-wrap: wrap
+    }
+
+    .textLink {
+      font-weight: 700;
+      text-decoration: none;
+      border-bottom: 2px solid var(--pinkDeep);
+      padding-bottom: 2px
+    }
+
+    .note {
+      font: 1rem var(--note);
+      margin-top: 12px
+    }
+
+    /* bridge */
+    .bridge {
+      padding: 70px 0;
+      background: var(--night);
+      color: var(--cream);
+      overflow: hidden
+    }
+
+    .bridgeInner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center
+    }
+
+    .bridge h2 {
+      font: 700 clamp(2.8rem, 5vw, 4.4rem) var(--hand);
+      line-height: .95;
+      margin: 0
+    }
+
+    .bridge p {
+      color: #d9d0dc;
+      max-width: 570px
+    }
+
+    .bridgeCards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px
+    }
+
+    .bridgeCard {
+      border: 1px solid rgba(255, 255, 255, .16);
+      border-radius: 18px;
+      padding: 20px;
+      background: rgba(255, 255, 255, .045);
+      transition: .2s
+    }
+
+    .bridgeCard:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, .08)
+    }
+
+    .bridgeCard b {
+      display: block;
+      font: 1.5rem var(--note);
+      margin-bottom: 5px
+    }
+
+    .bridgeCard span {
+      font-size: .82rem;
+      color: #c8bdca
+    }
+
+    /* sketchbook */
+    .sketchGrid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      grid-auto-rows: 120px;
+      gap: 18px
+    }
+
+    .sketch {
+      background: var(--paper);
+      border: 2px solid var(--ink);
+      border-radius: 7px;
+      padding: 9px 9px 34px;
+      box-shadow: 0 10px 24px rgba(62, 53, 64, .09);
+      position: relative;
+      transition: .22s
+    }
+
+    .sketch:hover {
+      transform: scale(1.04) rotate(0) !important;
+      z-index: 3;
+      box-shadow: 0 18px 34px rgba(62, 53, 64, .15)
+    }
+
+    .sketchVisual {
+      height: 100%;
+      border: 1px solid rgba(62, 53, 64, .28);
+      overflow: hidden;
+      border-radius: 4px
+    }
+
+    .sketchVisual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover
+    }
+
+    .sketchPlaceholder {
+      height: 100%;
+      display: grid;
+      place-items: center;
+      font: 1.1rem var(--note);
+      text-align: center;
+      padding: 10px;
+      background: linear-gradient(135deg, var(--pink), var(--lav))
+    }
+
+    .cap {
+      position: absolute;
+      bottom: 7px;
+      left: 11px;
+      right: 11px;
+      font: 14px var(--note);
+      color: var(--muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis
+    }
+
+    .sA {
+      grid-column: span 2;
+      grid-row: span 2;
+      transform: rotate(-3deg)
+    }
+
+    .sB {
+      grid-column: span 2;
+      grid-row: span 1;
+      transform: rotate(2deg)
+    }
+
+    .sC {
+      grid-column: span 2;
+      grid-row: span 2;
+      transform: rotate(1.5deg)
+    }
+
+    .sD {
+      grid-column: span 2;
+      grid-row: span 1;
+      transform: rotate(-1.5deg)
+    }
+
+    .sE {
+      grid-column: span 2;
+      grid-row: span 1;
+      transform: rotate(2.5deg)
+    }
+
+    .sF {
+      grid-column: span 2;
+      grid-row: span 2;
+      transform: rotate(-2deg)
+    }
+
+    /* creative desk + future updates */
+    .creativeDesk {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 28px;
+      align-items: stretch;
+      margin-top: 34px
+    }
+
+    .laptopBoard {
+      background: var(--paper);
+      border: 2px solid var(--ink);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 8px 9px 0 rgba(62, 53, 64, .10);
+      position: relative;
+      overflow: hidden
+    }
+
+    .laptop {
+      background: #d9d1d6;
+      border: 2px solid var(--ink);
+      border-radius: 14px 14px 7px 7px;
+      padding: 10px 10px 16px;
+      position: relative;
+      min-height: 245px
+    }
+
+    .laptopScreen {
+      background: #fffaf3;
+      border: 2px solid var(--ink);
+      border-radius: 8px;
+      height: 190px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      padding: 12px;
+      position: relative;
+      overflow: hidden
+    }
+
+    .screenArt {
+      border: 1.5px solid var(--ink);
+      border-radius: 8px;
+      background: linear-gradient(145deg, var(--lav), var(--pink));
+      position: relative;
+      overflow: hidden
+    }
+
+    .screenArt:before {
+      content: '✦';
+      position: absolute;
+      font-size: 44px;
+      left: 35%;
+      top: 30%;
+      color: var(--cream)
+    }
+
+    .screenUI {
+      border: 1.5px solid var(--ink);
+      border-radius: 8px;
+      background: var(--paper);
+      padding: 9px
+    }
+
+    .screenUI span {
+      display: block;
+      height: 8px;
+      background: var(--paper2);
+      border-radius: 8px;
+      margin-bottom: 8px
+    }
+
+    .screenUI span:nth-child(2) {
+      width: 70%;
+      background: var(--pink)
+    }
+
+    .screenUI span:nth-child(3) {
+      width: 82%;
+      background: var(--lav)
+    }
+
+    .laptopBase {
+      height: 16px;
+      background: #bcb4bb;
+      border: 2px solid var(--ink);
+      border-top: 0;
+      border-radius: 0 0 12px 12px;
+      margin: 0 -22px
+    }
+
+    .laptopSticker {
+      position: absolute;
+      background: var(--paper);
+      border: 1.5px solid var(--ink);
+      border-radius: 9px;
+      padding: 6px 11px;
+      font: 700 14px var(--note);
+      box-shadow: 3px 4px 0 rgba(62, 53, 64, .12);
+      z-index: 3
+    }
+
+    .ls1 {
+      top: 18px;
+      right: 18px;
+      transform: rotate(5deg);
+      background: var(--butter)
+    }
+
+    .ls2 {
+      bottom: 34px;
+      left: 20px;
+      transform: rotate(-5deg);
+      background: var(--lav)
+    }
+
+    .ls3 {
+      bottom: 12px;
+      right: 30px;
+      transform: rotate(3deg);
+      background: var(--green)
+    }
+
+    .ls4 {
+      top: 75px;
+      left: -8px;
+      transform: rotate(-7deg);
+      background: var(--pink)
+    }
+
+    .boardTitle {
+      font: 700 1.55rem var(--hand);
+      margin: 0 0 5px
+    }
+
+    .boardNote {
+      font: 1rem var(--note);
+      color: var(--muted);
+      margin: 0 0 15px
+    }
+
+    .drawingBoard {
+      background: var(--paper);
+      border: 2px solid var(--ink);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 8px 9px 0 rgba(62, 53, 64, .10);
+      position: relative
+    }
+
+    .drawingTablet {
+      height: 250px;
+      border: 2px solid var(--ink);
+      border-radius: 12px;
+      background: #e9e0d9;
+      position: relative;
+      transform: rotate(-1.5deg);
+      padding: 13px
+    }
+
+    .drawingCanvas {
+      height: 100%;
+      border: 2px solid var(--ink);
+      border-radius: 7px;
+      background: linear-gradient(145deg, #fffaf3, #f3e6f0);
+      position: relative;
+      overflow: hidden
+    }
+
+    .drawingCanvas:before {
+      content: '✿';
+      position: absolute;
+      font-size: 72px;
+      left: 31%;
+      top: 23%;
+      color: var(--pinkDeep);
+      transform: rotate(-10deg)
+    }
+
+    .drawingCanvas:after {
+      content: 'character in progress ♡';
+      position: absolute;
+      bottom: 14px;
+      left: 16px;
+      font: 16px var(--note);
+      color: var(--muted)
+    }
+
+    .stylus {
+      position: absolute;
+      width: 112px;
+      height: 9px;
+      background: var(--ink);
+      border-radius: 10px;
+      right: -25px;
+      top: 30px;
+      transform: rotate(58deg);
+      box-shadow: 0 0 0 4px var(--paper)
+    }
+
+    .future {
+      margin-top: 24px;
+      border: 2px dashed var(--ink);
+      border-radius: 16px;
+      padding: 18px;
+      background: rgba(255, 253, 247, .72)
+    }
+
+    .future h3 {
+      font: 700 1.6rem var(--hand);
+      margin: 0 0 6px
+    }
+
+    .future ul {
+      margin: 8px 0 0;
+      padding-left: 20px;
+      color: var(--muted)
+    }
+
+    .suggestBox {
+      margin-top: 18px;
+      background: var(--butter);
+      border: 2px solid var(--ink);
+      border-radius: 14px;
+      padding: 15px
+    }
+
+    .suggestBox strong {
+      font: 700 1.15rem var(--note);
+      display: block
+    }
+
+    .suggestBox span {
+      font-size: .86rem;
+      color: var(--muted)
+    }
+
+    /* about/toolkit */
+    .aboutGrid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 50px;
+      align-items: center
+    }
+
+    .aboutCard {
+      background: var(--paper);
+      border: 2px solid var(--ink);
+      border-radius: 18px;
+      padding: 28px;
+      transform: rotate(1deg);
+      box-shadow: 0 12px 28px rgba(62, 53, 64, .09)
+    }
+
+    .aboutIllustration {
+      aspect-ratio: 1/1;
+      background: linear-gradient(135deg, var(--butter), var(--pink));
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 7rem
+    }
+
+    .aboutText p {
+      margin: 0 0 15px
+    }
+
+    .aboutText strong {
+      background: linear-gradient(transparent 60%, var(--butter) 60%)
+    }
+
+    .toolBoard {
+      margin-top: 30px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px
+    }
+
+    .tool {
+      border: 2px solid var(--ink);
+      border-radius: 100px;
+      background: var(--paper);
+      padding: 9px 14px;
+      font: 1rem var(--note);
+      transition: .18s
+    }
+
+    .tool:hover {
+      transform: translateY(-4px) rotate(-2deg);
+      background: var(--butter)
+    }
+
+    /* footer */
+    footer {
+      background: var(--ink);
+      color: var(--cream);
+      padding: 90px 0 38px;
+      text-align: center
+    }
+
+    .footerTitle {
+      font: 700 clamp(3rem, 6vw, 5rem) var(--hand);
+      line-height: .9
+    }
+
+    .footerSub {
+      font: 1.05rem var(--note);
+      color: #d4cbd6;
+      margin-top: 12px
+    }
+
+    .footerLinks {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 38px
+    }
+
+    .footerLinks a {
+      border: 2px solid var(--cream);
+      border-radius: 100px;
+      padding: 10px 18px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: .88rem;
+      transition: .2s
+    }
+
+    .footerLinks a:hover {
+      background: var(--cream);
+      color: var(--ink);
+      transform: translateY(-3px)
+    }
+
+    .signature {
+      font: 3rem var(--hand);
+      margin-top: 55px
+    }
+
+    .copyright {
+      font-size: .76rem;
+      color: #a89bab;
+      margin-top: 18px
+    }
+
+
+    /* project cards open into dedicated case-study screens */
+    .projectCard {
+      cursor: pointer
+    }
+
+    .projectCard:focus-visible {
+      outline: 3px solid var(--lavDeep);
+      outline-offset: 5px
+    }
+
+    .verduraCardPreview {
+      background: #f0e8df;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/10
+    }
+
+    .verduraCardPreview img {
+      width: auto;
+      height: 94%;
+      max-width: 68%;
+      object-fit: contain;
+      border: 1.5px solid var(--ink);
+      border-radius: 12px;
+      box-shadow: 0 9px 22px rgba(62, 53, 64, .16);
+      background: #fff;
+      transition: .3s
+    }
+
+    .projectCard:hover .verduraCardPreview img {
+      transform: translateY(-4px) rotate(-1deg) scale(1.02)
+    }
+
+    .cardOpenHint {
+      position: absolute;
+      right: 12px;
+      bottom: 10px;
+      background: var(--paper);
+      border: 1.5px solid var(--ink);
+      border-radius: 100px;
+      padding: 4px 10px;
+      font: 13px var(--note);
+      box-shadow: 2px 3px 0 rgba(62, 53, 64, .1);
+      opacity: 0;
+      transform: translateY(5px);
+      transition: .2s
+    }
+
+    .projectCard:hover .cardOpenHint,
+    .projectCard:focus-visible .cardOpenHint {
+      opacity: 1;
+      transform: none
+    }
+
+    .projectModal {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      display: none;
+      overflow-y: auto
+    }
+
+    .projectModal.open {
+      display: block
+    }
+
+    .projectModalBackdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(45, 38, 49, .72);
+      backdrop-filter: blur(9px);
+      opacity: 0;
+      transition: opacity .42s ease
+    }
+
+    .projectModal.open .projectModalBackdrop {
+      opacity: 1
+    }
+
+    .projectSheet {
+      position: relative;
+      width: min(1120px, calc(100% - 34px));
+      min-height: calc(100vh - 34px);
+      margin: 17px auto;
+      padding: 34px 42px 55px;
+      background: var(--cream);
+      border: 2px solid var(--ink);
+      border-radius: 26px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .24);
+      opacity: 0;
+      transform: translate(var(--from-x, 0), var(--from-y, 0)) scale(var(--from-scale, 1));
+      transform-origin: center;
+      transition: transform .55s cubic-bezier(.2, .85, .22, 1), opacity .3s ease
+    }
+
+    .projectModal.open .projectSheet {
+      opacity: 1;
+      transform: none
+    }
+
+    .projectModal.closing .projectSheet {
+      opacity: 0;
+      transform: translate(var(--from-x, 0), var(--from-y, 0)) scale(var(--from-scale, 1));
+      transition-duration: .42s
+    }
+
+    .projectModal.closing .projectModalBackdrop {
+      opacity: 0
+    }
+
+    .projectClose {
+      position: absolute;
+      top: 20px;
+      right: 22px;
+      width: 42px;
+      height: 42px;
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+      background: var(--paper);
+      font-size: 25px;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 3px 4px 0 var(--ink);
+      z-index: 5
+    }
+
+    .backToProjects {
+      border: 0;
+      background: transparent;
+      padding: 0;
+      color: var(--muted);
+      font: 1.05rem var(--note);
+      cursor: pointer
+    }
+
+    .projectSheetTop {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-right: 62px
+    }
+
+    .projectSheetTop>span {
+      font: 1rem var(--note);
+      color: var(--muted)
+    }
+
+    .projectHeroCopy {
+      max-width: 780px;
+      margin: 54px 0 45px
+    }
+
+    .projectModalTitle {
+      font: 700 clamp(3.4rem, 7vw, 6rem) var(--hand);
+      line-height: .9;
+      margin: 8px 0 12px
+    }
+
+    .projectHeroCopy>p {
+      max-width: 680px;
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin: 0 0 18px
+    }
+
+    .projectMeta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px
+    }
+
+    .projectMeta span {
+      border: 1.4px solid var(--ink);
+      border-radius: 100px;
+      background: var(--paper);
+      padding: 5px 11px;
+      font-size: .75rem;
+      font-weight: 700
+    }
+
+    .projectCaseGrid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(280px, .65fr);
+      gap: 38px;
+      align-items: start
+    }
+
+    .projectScreensArea {
+      min-width: 0
+    }
+
+    /* Instagram-Instant inspired screen stack: layered previews + fast crossfade */
+    .instantStage {
+      width: 100%;
+      height: 590px;
+      position: relative;
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: pan-y;
+      isolation: isolate
+    }
+
+    .instantStack {
+      position: relative;
+      width: min(390px, 72%);
+      height: 100%;
+      display: grid;
+      place-items: center
+    }
+
+    .instantCard {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      padding: 14px;
+      border: 2px solid var(--ink);
+      border-radius: 22px;
+      background: var(--paper);
+      box-shadow: 0 18px 42px rgba(62, 53, 64, .14);
+      transition: transform .28s ease, opacity .28s ease, filter .28s ease;
+      overflow: hidden;
+      will-change: transform, opacity
+    }
+
+    .instantCard img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+      background: #f5eee7;
+      border: 1px solid rgba(62, 53, 64, .12);
+      display: block
+    }
+
+    .instantCard.back1 {
+      transform: translate(14px, -13px) rotate(2.2deg) scale(.965);
+      z-index: 1;
+      opacity: .72;
+      filter: saturate(.9)
+    }
+
+    .instantCard.back2 {
+      transform: translate(25px, -24px) rotate(4deg) scale(.93);
+      z-index: 0;
+      opacity: .42;
+      filter: saturate(.75)
+    }
+
+    .instantCard.back3 {
+      transform: translate(34px, -33px) rotate(5.5deg) scale(.895);
+      z-index: -1;
+      opacity: .22;
+      filter: saturate(.6)
+    }
+
+    .instantCard.top {
+      z-index: 4;
+      opacity: 1;
+      transform: translate(0, 0) rotate(-.4deg) scale(1);
+      transition: opacity .22s ease, transform .22s ease
+    }
+
+    .instantCard.top.fadeOut {
+      opacity: 0;
+      transform: translate(-8px, -4px) rotate(-1deg) scale(.985)
+    }
+
+    .instantCard .instantLabel {
+      position: absolute;
+      left: 22px;
+      top: 20px;
+      z-index: 3;
+      background: rgba(255, 253, 247, .92);
+      border: 1.5px solid var(--ink);
+      border-radius: 999px;
+      padding: 5px 10px;
+      font: 1rem var(--note);
+      box-shadow: 2px 3px 0 rgba(62, 53, 64, .1)
+    }
+
+    .instantTapHint {
+      position: absolute;
+      bottom: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 8;
+      background: rgba(255, 253, 247, .94);
+      border: 1.5px solid var(--ink);
+      border-radius: 999px;
+      padding: 5px 12px;
+      font: 1rem var(--note);
+      box-shadow: 2px 3px 0 rgba(62, 53, 64, .1);
+      white-space: nowrap
+    }
+
+    .instantControls {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 10px
+    }
+
+    .screenArrow {
+      border: 2px solid var(--ink);
+      border-radius: 100px;
+      background: var(--paper);
+      padding: 8px 16px;
+      cursor: pointer;
+      font: 1rem var(--note);
+      box-shadow: 2px 3px 0 var(--ink)
+    }
+
+    .screenArrow:disabled {
+      opacity: .35;
+      cursor: default;
+      box-shadow: none
+    }
+
+    .screenIndex {
+      font: 1rem var(--note);
+      color: var(--muted)
+    }
+
+    .meloCardPreview {
+      background: linear-gradient(135deg, #F3DCE8 0%, #E7D8F2 48%, #D7E9E8 100%);
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      min-height: 260px
+    }
+
+    .meloCardPreview:before {
+      content: '✦  ♡  ✿';
+      position: absolute;
+      top: 24px;
+      left: 28px;
+      color: rgba(62, 53, 64, .5);
+      font: 1.1rem var(--note);
+      letter-spacing: 8px;
+      transform: rotate(-4deg)
+    }
+
+    .meloCardPreview:after {
+      content: 'a tiny corner for feelings';
+      position: absolute;
+      bottom: 20px;
+      right: 25px;
+      color: rgba(62, 53, 64, .45);
+      font: 1rem var(--note);
+      transform: rotate(3deg)
+    }
+
+    .meloThumbGlow {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .34);
+      filter: blur(2px);
+      right: -45px;
+      top: -55px
+    }
+
+    .meloThumbCopy {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: var(--ink);
+      transform: rotate(1.5deg)
+    }
+
+    .meloThumbCopy span {
+      display: block;
+      font: 700 3.2rem var(--hand);
+      line-height: .9
+    }
+
+    .meloThumbCopy small {
+      display: block;
+      margin-top: 12px;
+      font: 1rem var(--note);
+      color: var(--muted)
+    }
+
+    .verduraCardPreview {
+      background: linear-gradient(135deg, #DCE8D8 0%, #E9D9C8 45%, #D5C6E8 100%);
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      min-height: 260px
+    }
+
+    .verduraCardPreview:before {
+      content: '✦  ✿  ♡';
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      color: rgba(62, 53, 64, .55);
+      font: 1.1rem var(--note);
+      letter-spacing: 8px;
+      transform: rotate(5deg)
+    }
+
+    .verduraCardPreview:after {
+      content: 'leaf notes / little things';
+      position: absolute;
+      bottom: 20px;
+      left: 25px;
+      color: rgba(62, 53, 64, .48);
+      font: 1rem var(--note);
+      transform: rotate(-4deg)
+    }
+
+    .verduraThumbGlow {
+      position: absolute;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .35);
+      filter: blur(2px);
+      top: -55px;
+      left: -35px
+    }
+
+    .verduraThumbCopy {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      color: var(--ink);
+      transform: rotate(-2deg)
+    }
+
+    .verduraThumbCopy span {
+      display: block;
+      font: 700 3rem var(--hand);
+      line-height: .9
+    }
+
+    .verduraThumbCopy small {
+      display: block;
+      margin-top: 12px;
+      font: 1rem var(--note);
+      color: var(--muted)
+    }
+
+    .projectDetails {
+      background: var(--paper);
+      border: 2px solid var(--ink);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 6px 7px 0 rgba(62, 53, 64, .08);
+      position: sticky;
+      top: 20px
+    }
+
+    .projectDetails h3 {
+      font: 700 1.9rem var(--hand);
+      margin: 0 0 10px
+    }
+
+    .projectDetails h4 {
+      font: 1.25rem var(--note);
+      margin: 24px 0 6px
+    }
+
+    .projectDetails p,
+    .projectDetails li {
+      color: var(--muted);
+      font-size: .9rem;
+      line-height: 1.7
+    }
+
+    .projectDetails ul {
+      padding-left: 20px
+    }
+
+    .projectDetails a {
+      display: inline-flex;
+      margin-top: 18px;
+      border: 2px solid var(--ink);
+      border-radius: 12px;
+      padding: 10px 15px;
+      background: var(--pinkDeep);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      box-shadow: 3px 4px 0 var(--ink)
+    }
+
+    .technicalSnapshot {
+      border: 1.5px dashed var(--ink);
+      border-radius: 14px;
+      padding: 12px;
+      margin-top: 15px;
+      background: var(--cream)
+    }
+
+    .technicalSnapshot img {
+      width: 100%;
+      max-height: 360px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: #fff
+    }
+
+    .projectWipCard {
+      min-height: 360px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      background: linear-gradient(135deg, var(--blue), var(--lav));
+      border: 2px solid var(--ink);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 18px 42px rgba(62, 53, 64, .12)
+    }
+
+    .projectWipCard strong {
+      font: 700 2.5rem var(--hand)
+    }
+
+    .projectWipCard p {
+      max-width: 450px;
+      color: var(--muted)
+    }
+
+    @media(max-width:900px) {
+      .projectSheet {
+        padding: 28px 22px 45px
+      }
+
+      .projectCaseGrid {
+        grid-template-columns: 1fr
+      }
+
+      .projectDetails {
+        position: static
+      }
+
+      .instantStage {
+        height: 520px
+      }
+
+      .instantStack {
+        width: min(370px, 68%)
+      }
+    }
+
+    @media(max-width:600px) {
+      .projectSheet {
+        width: calc(100% - 16px);
+        margin: 8px auto;
+        border-radius: 18px
+      }
+
+      .projectHeroCopy {
+        margin-top: 40px
+      }
+
+      .instantStage {
+        height: 450px
+      }
+
+      .instantStack {
+        width: min(320px, 72%)
+      }
+
+      .instantCard.back1 {
+        transform: translate(10px, -9px) rotate(2deg) scale(.965)
+      }
+
+      .instantCard.back2 {
+        transform: translate(18px, -17px) rotate(3.6deg) scale(.93)
+      }
+
+      .instantCard.back3 {
+        transform: translate(25px, -24px) rotate(5deg) scale(.895)
+      }
+
+      .projectSheetTop {
+        padding-right: 48px
+      }
+    }
+
+    /* reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity .8s ease, transform .8s ease
+    }
+
+    .reveal.left {
+      transform: translateX(-35px)
+    }
+
+    .reveal.right {
+      transform: translateX(35px)
+    }
+
+    .reveal.on {
+      opacity: 1;
+      transform: none
+    }
+
+    .delay1 {
+      transition-delay: .08s
+    }
+
+    .delay2 {
+      transition-delay: .16s
+    }
+
+    .delay3 {
+      transition-delay: .24s
+    }
+
+    .delay4 {
+      transition-delay: .32s
+    }
+
+    /* responsive */
+    @media(max-width:900px) {
+      .creativeDesk {
+        grid-template-columns: 1fr
+      }
+
+      body {
+        cursor: auto
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding-top: 55px
+      }
+
+      .heroVisual {
+        order: -1
+      }
+
+      .designGrid {
+        grid-template-columns: 1fr
+      }
+
+      .bridgeInner,
+      .aboutGrid {
+        grid-template-columns: 1fr
+      }
+
+      .sketchGrid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 160px
+      }
+
+      .sketch,
+      .sA,
+      .sB,
+      .sC,
+      .sD,
+      .sE,
+      .sF {
+        grid-column: span 1;
+        grid-row: span 1;
+        transform: rotate(0)
+      }
+
+      #cursor,
+      #cursorRing {
+        display: none
+      }
+    }
+
+    @media(max-width:600px) {
+      .nav {
+        padding-left: 16px;
+        padding-right: 16px
+      }
+
+      .navInner {
+        padding: 0
+      }
+
+      .brand {
+        font-size: 1.45rem
+      }
+
+      .brand small {
+        font-size: .8rem
+      }
+
+      .tabs a {
+        padding: 7px 12px 9px
+      }
+
+      .wrap {
+        padding: 0 18px
+      }
+
+      .section {
+        padding: 70px 0
+      }
+
+      .hero h1 {
+        font-size: 4.4rem
+      }
+
+      .flipStage {
+        height: 390px
+      }
+
+      .bridgeCards {
+        grid-template-columns: 1fr
+      }
+
+      .sketchGrid {
+        grid-template-columns: 1fr
+      }
+
+      .sketch,
+      .sA,
+      .sB,
+      .sC,
+      .sD,
+      .sE,
+      .sF {
+        min-height: 230px
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .001ms !important;
+        transition-duration: .001ms !important;
+        scroll-behavior: auto !important
+      }
+    }
+
+    /* FUTURE UPDATES + ARTIST DESK */
+    .future-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 70px
+    }
+
+    .future-card {
+      background: rgba(255, 255, 255, .82);
+      border: 1px solid rgba(62, 53, 64, .12);
+      border-radius: 22px;
+      padding: 28px;
+      display: flex;
+      gap: 18px;
+      box-shadow: 0 10px 30px rgba(62, 53, 64, .06);
+      transition: transform .3s, box-shadow .3s
+    }
+
+    .future-card:hover {
+      transform: translateY(-5px) rotate(-.4deg);
+      box-shadow: 0 18px 40px rgba(62, 53, 64, .10)
+    }
+
+    .future-icon {
+      width: 42px;
+      height: 42px;
+      flex: 0 0 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: #F8DDE3;
+      font-size: 20px
+    }
+
+    .future-label {
+      font-size: 10px;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: #9A8B9A
+    }
+
+    .future-card h3 {
+      font-family: 'Caveat', cursive;
+      font-size: 28px;
+      font-weight: 700;
+      margin: 5px 0 7px;
+      color: #3E3540
+    }
+
+    .future-card p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: #6E6570
+    }
+
+    .future-note {
+      display: block;
+      margin-top: 12px;
+      font-family: 'Caveat', cursive;
+      color: #B66A7A;
+      font-size: 15px
+    }
+
+    .suggestion-link {
+      display: inline-block;
+      margin-top: 14px;
+      color: #B66A7A;
+      text-decoration: none;
+      border-bottom: 1px dashed #D9A6B1;
+      font-family: 'Caveat', cursive;
+      font-size: 17px
+    }
+
+    .artist-desk {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: 55px;
+      align-items: center;
+      padding: 48px;
+      border-radius: 28px;
+      background: #F3EAE1;
+      border: 1px dashed rgba(62, 53, 64, .22);
+      position: relative;
+      overflow: hidden
+    }
+
+    .artist-desk:after {
+      content: '✦';
+      position: absolute;
+      right: 24px;
+      top: 18px;
+      font-size: 24px;
+      color: #D9A6B1;
+      transform: rotate(12deg)
+    }
+
+    .desk-copy h3 {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 48px;
+      line-height: 1;
+      color: #3E3540;
+      margin: 10px 0 15px
+    }
+
+    .desk-copy p {
+      max-width: 430px;
+      color: #6E6570;
+      line-height: 1.8
+    }
+
+    .drawing-board {
+      background: #B99A7A;
+      padding: 14px 14px 10px;
+      border-radius: 10px;
+      box-shadow: 0 16px 35px rgba(62, 53, 64, .18);
+      transform: rotate(1.2deg);
+      position: relative
+    }
+
+    .board-top,
+    .board-tools {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #FFF8F0;
+      font-size: 9px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: 4px 5px 10px
+    }
+
+    .board-tools {
+      padding: 9px 5px 1px;
+      font-family: 'Caveat', cursive;
+      font-size: 13px;
+      letter-spacing: 0;
+      text-transform: none
+    }
+
+    .board-paper {
+      height: 270px;
+      background: #FFFDF7;
+      position: relative;
+      overflow: hidden;
+      border-radius: 3px;
+      box-shadow: inset 0 0 0 1px rgba(62, 53, 64, .08)
+    }
+
+    .character-placeholder {
+      position: absolute;
+      left: 50%;
+      top: 48%;
+      width: 150px;
+      height: 205px;
+      transform: translate(-50%, -50%) rotate(-3deg)
+    }
+
+    .char-head {
+      position: absolute;
+      left: 38px;
+      top: 18px;
+      width: 75px;
+      height: 75px;
+      border-radius: 48% 52% 45% 55%;
+      background: #F0C093;
+      border: 2px solid #3E3540
+    }
+
+    .char-body {
+      position: absolute;
+      left: 25px;
+      top: 90px;
+      width: 100px;
+      height: 105px;
+      border-radius: 35px 35px 18px 18px;
+      background: #C9B8E0;
+      border: 2px solid #3E3540
+    }
+
+    .char-hair {
+      position: absolute;
+      left: 27px;
+      top: 7px;
+      width: 98px;
+      height: 80px;
+      border-radius: 55% 55% 40% 40%;
+      background: #5D4651;
+      border: 2px solid #3E3540;
+      z-index: 2;
+      clip-path: polygon(0 0, 100% 0, 92% 72%, 80% 100%, 67% 72%, 53% 100%, 39% 74%, 20% 100%, 8% 72%)
+    }
+
+    .char-note {
+      position: absolute;
+      right: -55px;
+      bottom: 16px;
+      font-family: 'Caveat', cursive;
+      color: #9A7B88;
+      font-size: 15px;
+      line-height: 1.05;
+      transform: rotate(6deg)
+    }
+
+    .pencil-line {
+      position: absolute;
+      height: 2px;
+      background: #C7B7A7;
+      left: 18px;
+      right: 28px;
+      transform: rotate(-2deg);
+      opacity: .65
+    }
+
+    .pencil-line.one {
+      top: 38px
+    }
+
+    .pencil-line.two {
+      bottom: 38px;
+      left: 25px;
+      right: 120px
+    }
+
+    .board-doodle {
+      position: absolute;
+      left: 18px;
+      bottom: 60px;
+      color: #E7AEB4;
+      font-size: 28px;
+      transform: rotate(-8deg)
+    }
+
+    .board-doodle.star {
+      right: 20px;
+      left: auto;
+      top: 20px;
+      bottom: auto;
+      color: #C3B0E8;
+      font-size: 22px
+    }
+
+    @media(max-width:800px) {
+      .future-grid {
+        grid-template-columns: 1fr
+      }
+
+      .artist-desk {
+        grid-template-columns: 1fr;
+        padding: 30px
+      }
+
+      .drawing-board {
+        max-width: 520px;
+        width: 100%;
+        margin: auto
+      }
+
+      .desk-copy h3 {
+        font-size: 40px
+      }
+    }
+
+
+    /* visitor notebook + message box */
+    .notebookShell {
+      background: #B99A7A;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 18px 45px rgba(62, 53, 64, .16);
+      max-width: 940px;
+      margin: 0 auto;
+      transform: rotate(.35deg)
+    }
+
+    .notebookPaper {
+      background: #FFFDF7;
+      border-radius: 5px;
+      padding: 26px 26px 20px;
+      box-shadow: inset 0 0 0 1px rgba(62, 53, 64, .08);
+      position: relative
+    }
+
+    .notebookPaper:before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(to bottom, transparent 0, transparent 31px, rgba(195, 176, 232, .16) 32px);
+      pointer-events: none
+    }
+
+    .notebookLabel {
+      font-family: 'Caveat', cursive;
+      letter-spacing: .08em;
+      color: #9A7B88;
+      font-size: 14px;
+      margin-bottom: 12px
+    }
+
+    #dc {
+      display: block;
+      width: 100%;
+      height: auto;
+      min-height: 240px;
+      background: transparent;
+      cursor: crosshair;
+      position: relative;
+      z-index: 1
+    }
+
+    .notebookHint {
+      text-align: center;
+      font-family: 'Caveat', cursive;
+      color: #A898C0;
+      font-size: 16px;
+      margin-top: 8px
+    }
+
+    .drawControls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+      flex-wrap: wrap;
+      padding: 12px 4px 2px
+    }
+
+    .colorDot {
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      cursor: pointer;
+      box-shadow: 0 1px 5px rgba(0, 0, 0, .12);
+      transition: transform .2s, border-color .2s
+    }
+
+    .colorDot:nth-child(1) {
+      background: #E8839A
+    }
+
+    .colorDot:nth-child(2) {
+      background: #2B1D42
+    }
+
+    .colorDot:nth-child(3) {
+      background: #90D4C8
+    }
+
+    .colorDot:nth-child(4) {
+      background: #F0C080
+    }
+
+    .colorDot:nth-child(5) {
+      background: #C3B0E8
+    }
+
+    .colorDot:hover,
+    .colorDot.active {
+      transform: scale(1.25);
+      border-color: #FFF8F0
+    }
+
+    .clearDraw {
+      border: 0;
+      background: #FFF8F0;
+      color: #6B5B8A;
+      border-radius: 25px;
+      padding: 8px 18px;
+      font-family: 'Caveat', cursive;
+      font-size: 15px;
+      cursor: pointer
+    }
+
+    .leaveMessage {
+      max-width: 900px;
+      margin: 46px auto 36px;
+      padding: 38px;
+      border-radius: 28px;
+      background: rgba(255, 255, 255, .07);
+      border: 1px solid rgba(255, 255, 255, .12);
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 36px;
+      text-align: left
+    }
+
+    .messageEyebrow {
+      font-family: 'Caveat', cursive;
+      color: #F2A8BC;
+      font-size: 18px;
+      margin-bottom: 8px
+    }
+
+    .messageCopy h3 {
+      font-family: 'Pinyon Script', cursive;
+      font-size: 44px;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: 14px
+    }
+
+    .messageCopy p {
+      font-size: 14px !important;
+      color: rgba(255, 255, 255, .52) !important;
+      line-height: 1.8 !important;
+      margin: 0 !important
+    }
+
+    .messageForm {
+      display: flex;
+      flex-direction: column;
+      gap: 8px
+    }
+
+    .messageForm label {
+      font-size: 10px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .48);
+      margin-top: 3px
+    }
+
+    .messageForm input,
+    .messageForm textarea {
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, .13);
+      border-radius: 13px;
+      background: rgba(255, 255, 255, .06);
+      color: #fff;
+      padding: 11px 13px;
+      font-family: 'Jost', sans-serif;
+      font-size: 13px;
+      outline: none;
+      resize: vertical
+    }
+
+    .messageForm input::placeholder,
+    .messageForm textarea::placeholder {
+      color: rgba(255, 255, 255, .3)
+    }
+
+    .messageForm input:focus,
+    .messageForm textarea:focus {
+      border-color: #F2A8BC
+    }
+
+    .messageForm button {
+      margin-top: 7px;
+      border: 0;
+      border-radius: 30px;
+      padding: 12px 22px;
+      background: #E8839A;
+      color: #fff;
+      font-family: 'Jost', sans-serif;
+      cursor: pointer;
+      transition: transform .2s, filter .2s
+    }
+
+    .messageForm button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08)
+    }
+
+    @media(max-width:760px) {
+      .leaveMessage {
+        grid-template-columns: 1fr;
+        padding: 28px
+      }
+
+      .notebookShell {
+        transform: none
+      }
+    }
+
+
+    /* Verdura carousel + touch-safe drawing */
+    .verduraPreview {
+      background: #f0e8df;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/10
+    }
+
+    .carouselImage {
+      height: 92%;
+      width: auto;
+      max-width: 68%;
+      object-fit: contain;
+      border: 1.5px solid var(--ink);
+      border-radius: 12px;
+      box-shadow: 0 9px 22px rgba(62, 53, 64, .16);
+      background: #fff;
+      transition: opacity .18s ease, transform .25s ease
+    }
+
+    .carouselBtn {
+      position: absolute;
+      z-index: 4;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 2px solid var(--ink);
+      background: var(--paper);
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 3px 4px 0 rgba(62, 53, 64, .12);
+      transition: .18s
+    }
+
+    .carouselBtn:hover {
+      transform: scale(1.08);
+      background: var(--butter)
+    }
+
+    .carouselBtn.prev {
+      left: 12px
+    }
+
+    .carouselBtn.next {
+      right: 12px
+    }
+
+    .carouselCount {
+      position: absolute;
+      bottom: 9px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(255, 253, 247, .92);
+      border: 1px solid var(--ink);
+      border-radius: 100px;
+      padding: 3px 9px;
+      font: 13px var(--note);
+      z-index: 4
+    }
+
+    .verduraPreview.isChanging .carouselImage {
+      opacity: .25;
+      transform: scale(.98)
+    }
+
+    #dc {
+      touch-action: none;
+      -ms-touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none
+    }
+
+    @media(max-width:600px) {
+      .carouselImage {
+        max-width: 64%;
+        height: 90%
+      }
+
+      .carouselBtn {
+        width: 38px;
+        height: 38px
+      }
+
+      .verduraPreview {
+        aspect-ratio: 4/3
+      }
+    }
+
+
+    /* Verdura project intro — soft gradient studio backdrop */
+    .projectSheet.verduraProject {
+      background:
+        radial-gradient(circle at 12% 18%, rgba(232, 131, 154, .24), transparent 28%),
+        radial-gradient(circle at 88% 16%, rgba(195, 176, 232, .28), transparent 30%),
+        radial-gradient(circle at 74% 82%, rgba(144, 212, 200, .22), transparent 28%),
+        linear-gradient(135deg, #fff8f0 0%, #f7eef7 48%, #eef6f2 100%);
+    }
+
+    .projectSheet.verduraProject .projectHeroCopy {
+      position: relative;
+      padding: 38px 42px 34px;
+      margin-top: 34px;
+      border: 1.5px dashed rgba(62, 53, 64, .22);
+      border-radius: 28px;
+      background: rgba(255, 253, 247, .48);
+      overflow: hidden
+    }
+
+    .projectSheet.verduraProject .projectHeroCopy:before {
+      content: '✦   ✿   ♡';
+      position: absolute;
+      right: 28px;
+      top: 18px;
+      font: 1.25rem var(--note);
+      color: var(--pinkDeep);
+      letter-spacing: 10px;
+      opacity: .72
+    }
+
+    .projectSheet.verduraProject .projectHeroCopy:after {
+      content: 'plant shopping, but make it feel simple ♡';
+      position: absolute;
+      right: 30px;
+      bottom: 15px;
+      font: 1rem var(--note);
+      color: var(--muted);
+      transform: rotate(-3deg)
+    }
+
+    .projectSheet.verduraProject .projectHeroCopy>p {
+      max-width: 700px
+    }
+
+    /* Melo project intro — softer lavender/rose gradient */
+    .projectSheet.meloProject {
+      background:
+        radial-gradient(circle at 10% 16%, rgba(232, 131, 154, .22), transparent 28%),
+        radial-gradient(circle at 88% 18%, rgba(195, 176, 232, .3), transparent 30%),
+        radial-gradient(circle at 72% 84%, rgba(144, 212, 200, .2), transparent 28%),
+        linear-gradient(135deg, #fff7f2 0%, #f6eef8 50%, #edf7f5 100%);
+    }
+
+    .projectSheet.meloProject .projectHeroCopy {
+      position: relative;
+      padding: 38px 42px 34px;
+      margin-top: 34px;
+      border: 1.5px dashed rgba(62, 53, 64, .22);
+      border-radius: 28px;
+      background: rgba(255, 253, 247, .48);
+      overflow: hidden
+    }
+
+    .projectSheet.meloProject .projectHeroCopy:before {
+      content: '♡   ✦   ✿';
+      position: absolute;
+      right: 28px;
+      top: 18px;
+      font: 1.25rem var(--note);
+      color: var(--pinkDeep);
+      letter-spacing: 10px;
+      opacity: .72
+    }
+
+    .projectSheet.meloProject .projectHeroCopy:after {
+      content: 'a little softer, a little more human ♡';
+      position: absolute;
+      right: 30px;
+      bottom: 15px;
+      font: 1rem var(--note);
+      color: var(--muted);
+      transform: rotate(-3deg)
+    }
+
+    .projectSheet.meloProject .projectHeroCopy>p {
+      max-width: 700px
+    }
+
+
+    /* PediaPredict project intro — warm clinical / peach-blue hue */
+    .projectSheet.pediaProject {
+      background:
+        radial-gradient(circle at 10% 18%, rgba(236, 170, 150, .22), transparent 29%),
+        radial-gradient(circle at 88% 15%, rgba(167, 194, 224, .30), transparent 30%),
+        radial-gradient(circle at 76% 82%, rgba(224, 201, 150, .20), transparent 28%),
+        linear-gradient(135deg, #fff8f0 0%, #f1f4fa 52%, #f8f1e8 100%);
+    }
+
+    .projectSheet.pediaProject .projectHeroCopy {
+      position: relative;
+      padding: 38px 42px 34px;
+      margin-top: 34px;
+      border: 1.5px dashed rgba(62, 53, 64, .22);
+      border-radius: 28px;
+      background: rgba(255, 253, 247, .48);
+      overflow: hidden
+    }
+
+    .projectSheet.pediaProject .projectHeroCopy:before {
+      content: '✦   ⊹   ✎';
+      position: absolute;
+      right: 28px;
+      top: 18px;
+      font: 1.25rem var(--note);
+      color: #7d98b6;
+      letter-spacing: 10px;
+      opacity: .72
+    }
+
+    .projectSheet.pediaProject .projectHeroCopy:after {
+      content: 'where healthcare meets machine learning';
+      position: absolute;
+      right: 30px;
+      bottom: 15px;
+      font: 1rem var(--note);
+      color: var(--muted);
+      transform: rotate(-3deg)
+    }
+
+    /* AgroPredict project intro — earthy sky / harvest hue */
+    .projectSheet.agroProject {
+      background:
+        radial-gradient(circle at 12% 18%, rgba(218, 181, 124, .24), transparent 29%),
+        radial-gradient(circle at 88% 15%, rgba(151, 191, 190, .28), transparent 30%),
+        radial-gradient(circle at 76% 82%, rgba(194, 169, 205, .20), transparent 28%),
+        linear-gradient(135deg, #fff8ed 0%, #edf5f2 50%, #f4eef7 100%);
+    }
+
+    .projectSheet.agroProject .projectHeroCopy {
+      position: relative;
+      padding: 38px 42px 34px;
+      margin-top: 34px;
+      border: 1.5px dashed rgba(62, 53, 64, .22);
+      border-radius: 28px;
+      background: rgba(255, 253, 247, .48);
+      overflow: hidden
+    }
+
+    .projectSheet.agroProject .projectHeroCopy:before {
+      content: '✿   ✦   ⌁';
+      position: absolute;
+      right: 28px;
+      top: 18px;
+      font: 1.25rem var(--note);
+      color: #718f88;
+      letter-spacing: 10px;
+      opacity: .72
+    }
+
+    .projectSheet.agroProject .projectHeroCopy:after {
+      content: 'can data help farmers decide better?';
+      position: absolute;
+      right: 30px;
+      bottom: 15px;
+      font: 1rem var(--note);
+      color: var(--muted);
+      transform: rotate(-3deg)
+    }
+
+    @media(max-width:700px) {
+
+      .projectSheet.pediaProject .projectHeroCopy,
+      .projectSheet.agroProject .projectHeroCopy {
+        padding: 28px 22px 54px
+      }
+
+      .projectSheet.pediaProject .projectHeroCopy:after,
+      .projectSheet.agroProject .projectHeroCopy:after {
+        right: 18px;
+        bottom: 12px
+      }
+
+      .projectSheet.pediaProject .projectHeroCopy:before,
+      .projectSheet.agroProject .projectHeroCopy:before {
+        right: 16px
+      }
+    }
+
+    @media(max-width:700px) {
+      .projectSheet.verduraProject .projectHeroCopy {
+        padding: 28px 22px 54px
+      }
+
+      .projectSheet.verduraProject .projectHeroCopy:after {
+        right: 18px;
+        bottom: 12px
+      }
+
+      .projectSheet.verduraProject .projectHeroCopy:before {
+        right: 16px
+      }
+    }
+
+
+
+    /* Melo thumbnail: keep the handwritten caption clear of the project pill */
+    .projectCard[data-project="melo"] .meloCardPreview::after {
+      left: 25px;
+      right: auto;
+      bottom: 20px;
+      max-width: 46%;
+      white-space: normal;
+      text-align: left;
+    }
+
+    .projectCard[data-project="melo"] .meloCardPreview .cardOpenHint {
+      left: auto;
+      right: 18px;
+      bottom: 10px;
+      z-index: 3;
+      white-space: nowrap;
+    }
+
+    @media (max-width: 700px) {
+      .projectCard[data-project="melo"] .meloCardPreview::after {
+        max-width: 52%;
+        bottom: 18px;
+        left: 18px;
+      }
+
+      .projectCard[data-project="melo"] .meloCardPreview .cardOpenHint {
+        right: 12px;
+      }
+    }
+
+    /* Project-specific colour worlds */
+    .projectSheet.verduraProject {
+      background: linear-gradient(135deg, #f4f1dc 0%, #dce8cf 48%, #c7dfc4 100%);
+    }
+
+    .projectSheet.verduraProject:before {
+      background: radial-gradient(circle at 15% 12%, rgba(120, 164, 105, .24), transparent 28%), radial-gradient(circle at 88% 85%, rgba(215, 235, 194, .42), transparent 30%);
+    }
+
+    .projectSheet.meloProject {
+      background: linear-gradient(135deg, #f5e9f2 0%, #ddd8f1 52%, #d7e7ee 100%);
+    }
+
+    .projectSheet.pediaProject {
+      background: linear-gradient(135deg, #fff1df 0%, #dfeaf4 52%, #e8ddf1 100%);
+    }
+
+    .projectSheet.agroProject {
+      background: linear-gradient(135deg, #f5efd9 0%, #d9e8dd 52%, #d9dff0 100%);
+    }
+
+    /* Keep the homepage project cards compact: teaser, not case study */
+    .projectCard .projectDesc {
+      max-width: 32ch;
+    }
+
+    .projectCard .cardOpenHint {
+      left: auto;
+      right: 18px;
+    }
+
+    .projectCard[data-project="melo"] .projectDesc {
+      padding-right: 96px;
+    }
+
+    @media(max-width:700px) {
+      .projectCard[data-project="melo"] .projectDesc {
+        padding-right: 0
+      }
+
+      .projectCard .cardOpenHint {
+        position: static;
+        display: inline-block;
+        margin-top: 8px
+      }
+    }
+
+    .pediaCardPreview {
+      background: linear-gradient(135deg, #fff0dc 0%, #dceaf5 48%, #ddd4ec 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pediaThumbGlow,
+    .agroThumbGlow {
+      position: absolute;
+      inset: -20%;
+      background: radial-gradient(circle at 20% 20%, rgba(255, 255, 255, .65), transparent 28%), radial-gradient(circle at 82% 75%, rgba(255, 206, 177, .28), transparent 30%);
+    }
+
+    .pediaThumbCopy,
+    .agroThumbCopy {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      transform: translateY(-2px);
+    }
+
+    .pediaThumbCopy span,
+    .agroThumbCopy span {
+      font-family: var(--script);
+      font-size: clamp(28px, 4vw, 46px);
+      color: var(--ink);
+    }
+
+    .pediaThumbCopy small,
+    .agroThumbCopy small {
+      margin-top: 6px;
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: .04em;
+    }
+
+    .agroCardPreview {
+      background: linear-gradient(135deg, #f3efd8 0%, #d7e8db 50%, #d9dcef 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .agroThumbGlow {
+      background: radial-gradient(circle at 18% 24%, rgba(255, 255, 255, .7), transparent 28%), radial-gradient(circle at 80% 72%, rgba(184, 218, 184, .38), transparent 30%);
+    }
+
+    .projectCard[data-project="pediapredict"] .cardOpenHint,
+    .projectCard[data-project="agropredict"] .cardOpenHint {
+      right: 18px;
+      left: auto;
+    }
+
+    /* Homepage thumbnail hues */
+    .verduraCardPreview {
+      background: linear-gradient(135deg, #eef1dc 0%, #d4e4c8 48%, #c5dcc3 100%) !important;
+    }
+
+    .verduraThumbGlow {
+      background: radial-gradient(circle at 20% 18%, rgba(255, 255, 255, .7), transparent 27%), radial-gradient(circle at 82% 78%, rgba(164, 197, 142, .35), transparent 30%) !important;
+    }
+
+    /* FINAL MELO THUMBNAIL FIX */
+    .projectCard[data-project="melo"] .meloCardPreview {
+      position: relative !important;
+      overflow: hidden !important;
+    }
+
+    .projectCard[data-project="melo"] .meloCardPreview::after {
+      content: "a tiny corner for feelings";
+      position: absolute !important;
+      left: 18px !important;
+      right: auto !important;
+      bottom: 18px !important;
+      width: 42% !important;
+      max-width: 42% !important;
+      margin: 0 !important;
+      text-align: left !important;
+      white-space: normal !important;
+      z-index: 2 !important;
+      pointer-events: none !important;
+    }
+
+    .projectCard[data-project="melo"] .meloCardPreview .cardOpenHint {
+      position: absolute !important;
+      right: 16px !important;
+      left: auto !important;
+      bottom: 12px !important;
+      z-index: 4 !important;
+      white-space: nowrap !important;
+    }
+
+    @media (max-width: 700px) {
+      .projectCard[data-project="melo"] .meloCardPreview::after {
+        left: 14px !important;
+        bottom: 16px !important;
+        width: 45% !important;
+        max-width: 45% !important;
+      }
+
+      .projectCard[data-project="melo"] .meloCardPreview .cardOpenHint {
+        right: 10px !important;
+        bottom: 10px !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="progress"></div>
+  <div id="cursor"></div>
+  <div id="cursorRing"></div>
+  <div class="cursorText">✦</div>
+  <header class="nav">
+    <div class="navInner"><a class="brand" href="#top">Rama Lekshmi<small>designer · developer · artist</small></a>
+      <nav class="tabs"><a href="#work">Work</a><a href="#build">Build</a><a href="#sketchbook">Sketchbook</a><a
+          href="#future">Future</a><a href="#about">About</a><a href="#contact">Say Hi</a></nav>
+    </div>
+  </header>
+  <main id="top">
+    <section class="hero">
+      <div class="aurora a1"></div>
+      <div class="aurora a2"></div>
+      <div class="aurora a3"></div>
+      <div class="wrap" style="display:contents">
+        <div class="heroCopy reveal left">
+          <div class="availability"><i></i> currently designing & building</div>
+          <h1>Hi, I'm<br><span>Rama</span> Lekshmi</h1>
+          <div class="role">UI/UX Designer <b>✦</b> Frontend Developer <b>✦</b> Digital Artist</div>
+          <p class="heroDesc">I like the space where visual design meets code — designing thoughtful interfaces,
+            building them for the web, and keeping a sketchbook open on the side.</p>
+          <div class="ctaRow"><a class="btn btnPrimary" href="#work">Explore my work →</a><a class="btn btnSecondary"
+              href="#sketchbook">Open sketchbook ✎</a></div>
+        </div>
+        <div class="heroVisual reveal right">
+          <div class="flipStage" id="flipStage">
+            <div class="flipCard">
+              <div class="face front">
+                <div class="faceHeader"><span>my little creative lab ♡</span><span class="tinyTag">front</span></div>
+                <div class="labArt">
+                  <div class="orb"></div><span class="sticker s1">Figma ✦</span><span class="sticker s2">draw →
+                    code</span><span class="sticker s3">make it useful</span>
+                </div>
+                <p class="faceFoot">design brain on · sketchbook nearby</p>
+              </div>
+              <div class="face back">
+                <div class="faceHeader"><span>behind the pixels</span><span class="tinyTag">back</span></div>
+                <div class="backList">
+                  <div class="backItem"><span>UI / UX</span><span>Figma · Prototyping</span></div>
+                  <div class="backItem"><span>Frontend</span><span>HTML · CSS · JS</span></div>
+                  <div class="backItem"><span>AI / ML</span><span>Python · ML projects</span></div>
+                  <div class="backItem"><span>Art</span><span>Krita · Illustration</span></div>
+                </div>
+                <div style="height:90px;display:grid;place-items:center;font-size:42px">✦ ♡ ✎</div>
+                <p class="faceFoot">same person, different canvas.</p>
+              </div>
+            </div>
+            <div class="flipHint">click me ↻</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="work">
+      <div class="wrap">
+        <div class="sectionHead reveal">
+          <div>
+            <div class="eyebrow">✎ selected interface work</div>
+            <h2 class="title">Design Studio</h2>
+            <p class="lede">Four projects, each with its own little corner. Click a project to step inside and explore
+              it.</p>
+          </div>
+          <div class="sectionNumber">01</div>
+        </div>
+        <div class="designGrid">
+          <article class="designCard projectCard reveal delay1" data-project="verdura" tabindex="0" role="button"
+            aria-label="Open Verdura project">
+            <span class="tape"></span>
+            <div class="preview verduraCardPreview">
+              <div class="verduraThumbGlow"></div>
+              <div class="verduraThumbCopy"><span>VERDURA</span><small>plant shopping app</small></div>
+              <span class="cardOpenHint">open project ↗</span>
+            </div>
+            <div class="projectInfo">
+              <div class="projectType">Mobile UI/UX · Figma</div>
+              <h3 class="projectTitle">Verdura</h3>
+              <p class="projectDesc">Plant shopping, but a little less overwhelming.</p>
+            </div>
+          </article>
+
+          <article class="designCard projectCard reveal delay2" data-project="melo" tabindex="0" role="button"
+            aria-label="Open Melo project">
+            <span class="tape" style="background:var(--lav);left:auto;right:25px;transform:rotate(5deg)"></span>
+            <div class="preview meloCardPreview">
+              <div class="meloThumbGlow"></div>
+              <div class="meloThumbCopy"><span>MELO</span><small>a softer place to check in ♡</small></div>
+              <span class="cardOpenHint">open project ↗</span>
+            </div>
+            <div class="projectInfo">
+              <div class="projectType">Product UI/UX · Figma</div>
+              <h3 class="projectTitle">Melo</h3>
+              <p class="projectDesc">A playful space for checking in, journaling and letting things out.</p>
+            </div>
+          </article>
+
+          <article class="designCard projectCard reveal delay3" data-project="pediapredict" tabindex="0" role="button"
+            aria-label="Open PediaPredict project">
+            <span class="tape" style="background:var(--butter)"></span>
+            <div class="preview pediaCardPreview">
+              <div class="pediaThumbGlow"></div>
+              <div class="pediaThumbCopy"><span>PEDIAPREDICT</span><small>healthcare × machine learning</small></div>
+              <span class="cardOpenHint">open project ↗</span>
+            </div>
+            <div class="projectInfo">
+              <div class="projectType">AI / ML · Python</div>
+              <h3 class="projectTitle">PediaPredict</h3>
+              <p class="projectDesc">Where healthcare meets machine learning.</p>
+            </div>
+          </article>
+
+          <article class="designCard projectCard reveal delay4" data-project="agropredict" tabindex="0" role="button"
+            aria-label="Open AgroPredict project">
+            <span class="tape" style="background:var(--peach);left:auto;right:25px;transform:rotate(-4deg)"></span>
+            <div class="preview agroCardPreview">
+              <div class="agroThumbGlow"></div>
+              <div class="agroThumbCopy"><span>AGROPREDICT</span><small>data × farming decisions</small></div>
+              <span class="cardOpenHint">open project ↗</span>
+            </div>
+            <div class="projectInfo">
+              <div class="projectType">AI / ML · Web</div>
+              <h3 class="projectTitle">AgroPredict</h3>
+              <p class="projectDesc">Can data help farmers make better decisions?</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="projectModal" <div class="projectModal" id="projectModal" aria-hidden="true">
+      <div class="projectModalBackdrop" data-close-project></div>
+      <section class="projectSheet" role="dialog" aria-modal="true">
+        <button class="projectClose" type="button" data-close-project aria-label="Close project">×</button>
+        <div class="projectSheetTop"><button class="backToProjects" type="button" data-close-project>← back to
+            projects</button><span id="projectSheetCount"></span></div>
+        <div class="projectHeroCopy">
+          <div class="eyebrow" id="projectModalType"></div>
+          <h2 class="projectModalTitle" id="projectModalTitle"></h2>
+          <p id="projectModalTagline"></p>
+          <div class="projectMeta" id="projectModalMeta"></div>
+        </div>
+        <div class="projectCaseGrid">
+          <div class="projectScreensArea" id="projectScreensArea"></div>
+          <aside class="projectDetails" id="projectDetails"></aside>
+        </div>
+      </section>
+    </div>
+
+    <section class="bridge" id="build">
+      <div class="wrap">
+        <div class="bridgeInner">
+          <div class="reveal left">
+            <div class="eyebrow" style="color:#d9d0dc">✦ beyond the interface</div>
+            <h2>I don't just design the screen.<br>I like building it too.</h2>
+            <p style="margin-top:18px">My technical background lets me move from Figma into HTML, CSS and JavaScript,
+              while my AI/ML projects show that I can also work with Python, data and models. The point isn't to look
+              like two separate people — it's to show range.</p>
+          </div>
+          <div class="bridgeCards">
+            <div class="bridgeCard reveal delay1"><b>Frontend</b><span>HTML · CSS · JavaScript · responsive UI</span>
+            </div>
+            <div class="bridgeCard reveal delay2"><b>UI / UX</b><span>Figma · wireframes · prototypes · visual
+                systems</span></div>
+            <div class="bridgeCard reveal delay3"><b>AI / ML</b><span>Python · scikit-learn · TensorFlow ·
+                XGBoost</span></div>
+            <div class="bridgeCard reveal delay4"><b>Creative</b><span>Krita · digital illustration · animation ·
+                doodles</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="sketchbook">
+      <div class="wrap">
+        <div class="sectionHead reveal">
+          <div>
+            <div class="eyebrow">✿ open when curious</div>
+            <h2 class="title">My Sketchbook</h2>
+            <p class="lede">The part of the portfolio where I don't have to behave like a product designer.
+              Illustrations, music-inspired art, characters, animation frames and experiments.</p>
+          </div>
+          <div class="sectionNumber">02</div>
+        </div>
+        <div class="sketchGrid">
+          <div class="sketch sA reveal delay1">
+            <div class="sketchVisual">
+              <div class="sketchPlaceholder">YOUR<br>ARTWORK</div>
+            </div>
+            <div class="cap">digital illustration</div>
+          </div>
+          <div class="sketch sB reveal delay2">
+            <div class="sketchVisual">
+              <div class="sketchPlaceholder" style="background:var(--butter)">CHARACTER<br>ART</div>
+            </div>
+            <div class="cap">character study</div>
+          </div>
+          <div class="sketch sC reveal delay3">
+            <div class="sketchVisual">
+              <div class="sketchPlaceholder" style="background:var(--blue)">MUSIC<br>ANIMATION</div>
+            </div>
+            <div class="cap">music / animation</div>
+          </div>
+          <div class="sketch sD reveal delay1">
+            <div class="sketchVisual">
+              <div class="sketchPlaceholder" style="background:var(--green)">DOODLES</div>
+            </div>
+            <div class="cap">tiny experiments</div>
+          </div>
+          <div class="sketch sE reveal delay2">
+            <div class="sketchVisual">
+              <div class="sketchPlaceholder" style="background:var(--peach)">KAWAII<br>STUDIES</div>
+            </div>
+            <div class="cap">kawaii sketches</div>
+          </div>
+          <div class="sketch sF reveal delay3">
+            <div class="sketchVisual">
+              <div class="sketchPlaceholder" style="background:var(--lav)">KRITA<br>FRAMES</div>
+            </div>
+            <div class="cap">animation frames</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="wrap">
+        <div class="sectionHead reveal">
+          <div>
+            <div class="eyebrow">♡ a little context</div>
+            <h2 class="title">About the person<br>behind the pixels</h2>
+          </div>
+          <div class="sectionNumber">03</div>
+        </div>
+        <div class="aboutGrid">
+          <div class="aboutCard reveal left">
+            <div class="aboutIllustration">✎<br><span style="font:1.2rem var(--note)">design + code + art</span></div>
+          </div>
+          <div class="aboutText reveal right">
+            <p>I come from an <strong>AI/ML and technology background</strong>, but I keep getting pulled toward the
+              visual side of things — interfaces, interaction, typography, illustration and the little details that make
+              a product feel human.</p>
+            <p>So this portfolio isn't trying to force me into one box. It shows the overlap: <strong>design thinking,
+                frontend implementation, technical projects and art.</strong></p>
+            <p>I'm especially interested in roles where I can work close to the interface and keep learning through
+              making.</p>
+            <div class="toolBoard"><span class="tool">Figma</span><span class="tool">Krita</span><span
+                class="tool">HTML</span><span class="tool">CSS</span><span class="tool">JavaScript</span><span
+                class="tool">Python</span><span class="tool">Git</span><span class="tool">GitHub</span><span
+                class="tool">Streamlit</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section alt" id="future">
+      <div class="wrap">
+        <div class="sectionHead reveal">
+          <div>
+            <div class="eyebrow">✦ still in progress</div>
+            <h2 class="title">The studio keeps growing</h2>
+            <p class="lede">This portfolio isn't meant to stay frozen. I want it to evolve alongside the things I'm
+              learning, designing and drawing.</p>
+          </div>
+          <div class="sectionNumber">04</div>
+        </div>
+        <div class="creativeDesk">
+          <div class="laptopBoard reveal left">
+            <h3 class="boardTitle">my little work laptop ♡</h3>
+            <p class="boardNote">design → build → tweak → repeat</p>
+            <div class="laptop">
+              <div class="laptopScreen">
+                <div class="screenArt"></div>
+                <div class="screenUI"><span></span><span></span><span></span><span></span></div>
+              </div>
+              <div class="laptopBase"></div><span class="laptopSticker ls1">Figma ✦</span><span
+                class="laptopSticker ls2">Krita ♡</span><span class="laptopSticker ls3">HTML · CSS</span><span
+                class="laptopSticker ls4">Python</span>
+            </div>
+          </div>
+          <div class="drawingBoard reveal right">
+            <h3 class="boardTitle">character in the making</h3>
+            <p class="boardNote">I'm designing a little character to eventually live in this portfolio.</p>
+            <div class="drawingTablet">
+              <div class="drawingCanvas"></div>
+              <div class="stylus"></div>
+            </div>
+            <div class="future">
+              <h3>Future updates ✎</h3>
+              <ul>
+                <li>Finish and add my original profile character.</li>
+                <li>Replace placeholders with real Figma screens and artwork.</li>
+                <li>Add small interactive character moments around the site.</li>
+                <li>Add more animation experiments and new projects as I build them.</li>
+              </ul>
+            </div>
+            <div class="suggestBox"><strong>Have an idea for this little studio?</strong><span>If something on this site
+                could be more useful, playful or interesting, I'd genuinely love to hear your suggestion.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section notebook-section" id="notebook">
+      <div class="wrap">
+        <div class="sectionHead reveal">
+          <div>
+            <div class="eyebrow">✎ leave your mark</div>
+            <h2 class="title">Draw in my Notebook</h2>
+            <p class="lede">Every visitor gets a blank page — go wild 🎨</p>
+          </div>
+          <div class="sectionNumber">05</div>
+        </div>
+        <div class="notebookShell reveal">
+          <div class="notebookPaper">
+            <div class="notebookLabel">RAMA'S LITTLE NOTEBOOK</div>
+            <canvas id="dc" width="900" height="330"
+              aria-label="A blank drawing board where visitors can draw"></canvas>
+            <div class="notebookHint">draw something tiny, silly, beautiful or completely random ♡</div>
+          </div>
+          <div class="drawControls">
+            <button type="button" class="colorDot active" data-color="#E8839A" aria-label="Pink"></button>
+            <button type="button" class="colorDot" data-color="#2B1D42" aria-label="Ink"></button>
+            <button type="button" class="colorDot" data-color="#90D4C8" aria-label="Mint"></button>
+            <button type="button" class="colorDot" data-color="#F0C080" aria-label="Gold"></button>
+            <button type="button" class="colorDot" data-color="#C3B0E8" aria-label="Lavender"></button>
+            <button type="button" class="clearDraw" id="clearDc">🗑 clear page</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer id="contact">
+      <div class="wrap">
+        <div class="eyebrow" style="color:#d9d0dc">✦ last page</div>
+        <h2 class="footerTitle">Let's make<br>something good.</h2>
+        <p class="footerSub">A good interface, a little code, and maybe a doodle or two.</p>
+        <div class="leaveMessage">
+          <div class="messageCopy">
+            <div class="messageEyebrow">💌 leave a message</div>
+            <h3>Tell me what you think.</h3>
+            <p>Found something you liked? Have an idea for the site? Want to say hello? Leave me a little note and it
+              will open an email addressed to me.</p>
+          </div>
+          <form id="messageForm" class="messageForm">
+            <label for="visitorName">Your name</label>
+            <input id="visitorName" name="name" type="text" placeholder="what should I call you?" required>
+            <label for="visitorEmail">Your email</label>
+            <input id="visitorEmail" name="email" type="email" placeholder="so I can reply ♡" required>
+            <label for="visitorMessage">Your message</label>
+            <textarea id="visitorMessage" name="message" rows="5" placeholder="leave a little note..."
+              required></textarea>
+            <button type="submit">Leave a message ↗</button>
+          </form>
+        </div>
+        <div class="footerLinks">
+          <a href="mailto:ekrlpillai@gmail.com">✉ Email</a>
+          <a href="https://www.linkedin.com/in/rama-lekshmi" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="https://github.com/Rama-Lekshmi" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://www.instagram.com/doodlesbymarss?igsi=MTI3MWNmdzEzd2Jr" target="_blank"
+            rel="noopener">Instagram / Art ↗</a>
+        </div>
+        <div class="signature">Rama Lekshmi</div>
+        <div class="copyright">Made with pencil, pixels & code · © 2026 Rama Lekshmi</div>
+      </div>
+    </footer>
+  </main>
+  <script>
+    // cursor
+    const dot = document.getElementById('cursor'), ring = document.getElementById('cursorRing'); let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my; document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx + 'px'; dot.style.top = my + 'px' }); function cursorLoop() { rx += (mx - rx) * .14; ry += (my - ry) * .14; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(cursorLoop) } cursorLoop(); document.querySelectorAll('a,.btn,.designCard,.tool,.flipStage,.bridgeCard,.sketch').forEach(el => { el.addEventListener('mouseenter', () => document.body.classList.add('hovering')); el.addEventListener('mouseleave', () => document.body.classList.remove('hovering')) });
+    // progress
+    addEventListener('scroll', () => { const h = document.documentElement.scrollHeight - innerHeight; document.getElementById('progress').style.width = (h ? scrollY / h * 100 : 0) + '%' });
+    // reveal on scroll
+    const io = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on') }), { threshold: .12 }); document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    // flip card
+    const flip = document.getElementById('flipStage'); flip.addEventListener('click', () => flip.classList.toggle('flipped'));
+
+    // visitor notebook — touch-safe drawing
+    const dc = document.getElementById('dc');
+    if (dc) {
+      const ctx = dc.getContext('2d');
+      let drawing = false, color = '#E8839A', lastX = 0, lastY = 0, activePointer = null;
+      function point(e) { const r = dc.getBoundingClientRect(); return { x: (e.clientX - r.left) * (dc.width / r.width), y: (e.clientY - r.top) * (dc.height / r.height) } }
+      function start(e) { e.preventDefault(); drawing = true; activePointer = e.pointerId; try { dc.setPointerCapture(e.pointerId) } catch (_) { } const p = point(e); lastX = p.x; lastY = p.y }
+      function move(e) { if (!drawing || e.pointerId !== activePointer) return; e.preventDefault(); const p = point(e); ctx.strokeStyle = color; ctx.lineWidth = 3.2; ctx.lineCap = 'round'; ctx.lineJoin = 'round'; ctx.beginPath(); ctx.moveTo(lastX, lastY); ctx.lineTo(p.x, p.y); ctx.stroke(); lastX = p.x; lastY = p.y }
+      function stop(e) { if (e) e.preventDefault(); drawing = false; if (activePointer !== null) { try { dc.releasePointerCapture(activePointer) } catch (_) { } } activePointer = null }
+      dc.addEventListener('pointerdown', start, { passive: false }); dc.addEventListener('pointermove', move, { passive: false }); dc.addEventListener('pointerup', stop, { passive: false }); dc.addEventListener('pointercancel', stop, { passive: false }); dc.addEventListener('lostpointercapture', () => { drawing = false; activePointer = null });
+      document.querySelectorAll('.colorDot').forEach(btn => btn.addEventListener('click', () => { color = btn.dataset.color; document.querySelectorAll('.colorDot').forEach(x => x.classList.remove('active')); btn.classList.add('active') }));
+      document.getElementById('clearDc')?.addEventListener('click', () => ctx.clearRect(0, 0, dc.width, dc.height));
+    }
+
+    // project detail screens
+    const projectModal = document.getElementById('projectModal'), projectModalTitle = document.getElementById('projectModalTitle'), projectModalType = document.getElementById('projectModalType'), projectModalTagline = document.getElementById('projectModalTagline'), projectModalMeta = document.getElementById('projectModalMeta'), projectSheetCount = document.getElementById('projectSheetCount'), projectScreensArea = document.getElementById('projectScreensArea'), projectDetails = document.getElementById('projectDetails');
+    const projectSheet = document.querySelector('.projectSheet');
+    const projectData = {
+      verdura: { title: 'Verdura', type: 'Mobile UI/UX · Figma', tagline: 'Plant shopping, but a little less overwhelming.', meta: ['UI Design', 'Prototype', 'Mobile'], intro: 'Verdura is a mobile shopping concept designed around simple discovery, clear plant information and a straightforward checkout experience.', goal: 'What was I trying to solve?', goalText: 'Create a plant-shopping flow that feels easy to browse and easy to understand, from the first screen through order confirmation.', decisions: ['Keep the browsing flow clear and focused.', 'Present plant details without crowding the screen.', 'Make cart, payment and confirmation feel like one continuous journey.'], figma: '#', screens: ['assets/verdura/verdura-01.png', 'assets/verdura/verdura-02.png', 'assets/verdura/verdura-03.png', 'assets/verdura/verdura-04.png', 'assets/verdura/verdura-05.png', 'assets/verdura/verdura-06.png'], labels: ['Home', 'Menu', 'Plant Details', 'Cart', 'Payment', 'Order Confirmation'] },
+      melo: { title: 'Melo', type: 'Product UI/UX · Figma', tagline: 'A little softer, a little more human.', meta: ['UX Flow', 'UI Design', 'Prototype'], intro: 'Melo is a playful mental-wellness concept designed around emotional check-ins, journaling, drawing and supportive moments.', goal: 'What was I trying to create?', goalText: 'A mental-wellness experience that feels approachable and expressive rather than clinical or intimidating.', decisions: ['Keep the experience colorful, friendly and low-pressure.', 'Use small expressive interactions to make checking in feel easier.', 'Connect the different moments into one gentle, consistent flow.'], figma: '#', screens: ['assets/melo/melo-01.png', 'assets/melo/melo-02.png', 'assets/melo/melo-03.png', 'assets/melo/melo-04.png', 'assets/melo/melo-05.png', 'assets/melo/melo-06.png', 'assets/melo/melo-07.png', 'assets/melo/melo-08.png', 'assets/melo/melo-09.png', 'assets/melo/melo-10.png', 'assets/melo/melo-11.png'], labels: ['Home', 'Mood Check-in', 'Mood Result', 'Journal', 'Journal Entry', 'Drawing', 'Support', 'Resources', 'Profile', 'Settings', 'Final Screen'] },
+      pediapredict: { title: 'PediaPredict', type: 'AI / ML · Python · Technical Project', tagline: 'Where healthcare meets machine learning.', meta: ['Python', 'Machine Learning', 'XGBoost'], intro: 'A technical project exploring personalized pediatric dose prediction using clinical and multimodal data.', goal: 'What was I exploring?', goalText: 'How can patient-related information be combined with machine-learning models to support more personalized pediatric dose prediction?', decisions: ['Clinical/tabular features are part of the prediction pipeline.', 'Machine-learning based prediction is used for the dose estimation task.', 'The project focuses on the multimodal idea rather than pretending this is a deployed medical product.'], image: 'assets/pediapredict/pediapredict-preview.png', github: '#', tech: 'Python · XGBoost · Machine Learning' },
+      agropredict: { title: 'AgroPredict', type: 'AI / ML · Web · Frontend', tagline: 'Can data help farmers make better decisions?', meta: ['Python', 'Flask', 'Chart.js'], intro: 'An agricultural market decision-support project exploring price forecasting, market signals and profit-oriented crop decisions.', goal: 'What was I exploring?', goalText: 'How can historical agricultural price data be turned into a more understandable decision-support experience?', decisions: ['Forecasting is presented through a web interface.', 'Market signals are surfaced in a more readable way.', 'The frontend focuses on making model output easier to interpret.'], image: 'assets/agropredict/agropredict-preview.png', github: '#', tech: 'Python · Flask · Chart.js' }
+    };
+    let activeProject = null, activeScreen = 0, flipBusy = false, openingCard = null;
+    function openProject(key, sourceCard) {
+      const p = projectData[key]; if (!p) return;
+      activeProject = key; activeScreen = 0; openingCard = sourceCard || document.querySelector('.projectCard[data-project="' + key + '"]');
+      projectModal.classList.remove('closing');
+      projectSheet.classList.remove('verduraProject', 'meloProject', 'pediaProject', 'agroProject');
+      if (p.title === 'Verdura') projectSheet.classList.add('verduraProject');
+      if (p.title === 'Melo') projectSheet.classList.add('meloProject');
+      if (p.title === 'PediaPredict') projectSheet.classList.add('pediaProject');
+      if (p.title === 'AgroPredict') projectSheet.classList.add('agroProject');
+      if (openingCard) {
+        const r = openingCard.getBoundingClientRect(), sx = Math.min(1, r.width / projectSheet.offsetWidth || .35), sy = Math.min(1, r.height / projectSheet.offsetHeight || .25);
+        const scale = Math.min(sx, sy);
+        const sheetRect = projectSheet.getBoundingClientRect();
+        const cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+        const tx = cx - (sheetRect.left + sheetRect.width / 2), ty = cy - (sheetRect.top + sheetRect.height / 2);
+        projectSheet.style.setProperty('--from-x', tx + 'px');
+        projectSheet.style.setProperty('--from-y', ty + 'px');
+        projectSheet.style.setProperty('--from-scale', Math.max(.08, scale));
+      }
+      projectModal.classList.add('open'); projectModal.setAttribute('aria-hidden', 'false'); document.body.style.overflow = 'hidden';
+      projectModalTitle.textContent = p.title; projectModalType.textContent = p.type; projectModalTagline.textContent = p.tagline; projectModalMeta.innerHTML = p.meta.map(x => '<span>' + x + '</span>').join('');
+      renderProjectContent();
+      requestAnimationFrame(() => { projectSheet.style.setProperty('--from-x', '0px'); projectSheet.style.setProperty('--from-y', '0px'); projectSheet.style.setProperty('--from-scale', '1'); });
+    }
+    function closeProject() {
+      if (!projectModal.classList.contains('open')) return;
+      projectModal.classList.add('closing');
+      setTimeout(() => {
+        projectModal.classList.remove('open', 'closing');
+        projectModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+        activeProject = null;
+        projectSheet.classList.remove('verduraProject', 'meloProject', 'pediaProject', 'agroProject');
+        projectSheet.style.removeProperty('--from-x'); projectSheet.style.removeProperty('--from-y'); projectSheet.style.removeProperty('--from-scale');
+      }, 430);
+    }
+    function renderProjectContent() { const p = projectData[activeProject]; if (!p) return; if (p.wip) { projectSheetCount.textContent = 'work in progress'; projectScreensArea.innerHTML = '<div class="projectWipCard"><div><strong>this one is still on my drawing board ✎</strong><p>I haven\'t finished the screens yet, so I\'d rather show it honestly as a work in progress than fill this page with fake case-study content.</p></div></div>'; } else if (p.screens) { projectSheetCount.textContent = 'tap through the screens ♡'; projectScreensArea.innerHTML = '<div class="instantStage" id="instantStage" tabindex="0" aria-label="Tap to view the next project screen"><div class="instantStack" id="instantStack"></div><div class="instantTapHint">tap to see the next screen ↗</div></div><div class="instantControls"><button class="screenArrow" id="screenPrev" type="button">← previous</button><span class="screenIndex" id="screenIndex"></span><button class="screenArrow" id="screenNext" type="button">next →</button></div>'; bindInstant(p); } else { projectSheetCount.textContent = 'project snapshot'; projectScreensArea.innerHTML = '<div class="technicalSnapshot"><img src="' + p.image + '" alt="' + p.title + ' project screenshot"></div>'; } projectDetails.innerHTML = '<h3>A little context</h3><p>' + p.intro + '</p><h4>' + p.goal + '</h4><p>' + p.goalText + '</p><h4>What I focused on</h4><ul>' + p.decisions.map(x => '<li>' + x + '</li>').join('') + '</ul>' + (p.tech ? '<div class="technicalSnapshot"><strong>Stack</strong><p>' + p.tech + '</p></div>' : '') + (p.figma ? '<a href="' + p.figma + '" target="_blank" rel="noopener">Open Figma prototype ↗</a>' : '') + (p.github ? '<a href="' + p.github + '" target="_blank" rel="noopener">View GitHub ↗</a>' : ''); }
+    function bindInstant(p) { const stage = document.getElementById('instantStage'), stack = document.getElementById('instantStack'), idx = document.getElementById('screenIndex'), prev = document.getElementById('screenPrev'), next = document.getElementById('screenNext'); let didSwipe = false; function render() { stack.innerHTML = ''; const total = p.screens.length; for (let offset = Math.min(3, total - 1); offset >= 0; offset--) { const i = (activeScreen + offset) % total; const card = document.createElement('div'); card.className = 'instantCard ' + (offset === 0 ? 'top' : offset === 1 ? 'back1' : offset === 2 ? 'back2' : 'back3'); const img = document.createElement('img'); img.src = p.screens[i]; img.alt = p.title + ' — ' + p.labels[i]; card.appendChild(img); if (offset === 0) { const label = document.createElement('div'); label.className = 'instantLabel'; label.textContent = String(activeScreen + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0') + ' · ' + p.labels[activeScreen]; card.appendChild(label) } stack.appendChild(card) } idx.textContent = String(activeScreen + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0'); prev.disabled = activeScreen === 0; next.disabled = activeScreen === total - 1; } function go(d) { const target = activeScreen + d; if (target < 0 || target >= p.screens.length) return; const top = stack.querySelector('.instantCard.top'); if (top) top.classList.add('fadeOut'); setTimeout(() => { activeScreen = target; render() }, 190) } stage.onclick = e => { if (didSwipe) { didSwipe = false; return } go(1) }; prev.onclick = e => { e.stopPropagation(); go(-1) }; next.onclick = e => { e.stopPropagation(); go(1) }; stage.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(1) } else if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1) } }); let startX = 0; stage.addEventListener('pointerdown', e => { startX = e.clientX; didSwipe = false }); stage.addEventListener('pointerup', e => { const dx = e.clientX - startX; if (Math.abs(dx) > 45) { didSwipe = true; go(dx < 0 ? 1 : -1) } }); render(); }
+    document.querySelectorAll('.projectCard').forEach(c => { c.addEventListener('click', () => openProject(c.dataset.project, c)); c.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openProject(c.dataset.project, c); } }) }); document.querySelectorAll('[data-close-project]').forEach(e => e.addEventListener('click', closeProject)); document.addEventListener('keydown', e => { if (e.key === 'Escape' && projectModal.classList.contains('open')) closeProject(); });
+
+    // leave a message — opens the visitor's email client with the message addressed to Rama.
+    document.getElementById('messageForm')?.addEventListener('submit', e => {
+      e.preventDefault();
+      const name = document.getElementById('visitorName').value.trim();
+      const email = document.getElementById('visitorEmail').value.trim();
+      const message = document.getElementById('visitorMessage').value.trim();
+      const subject = encodeURIComponent('A little message from ' + name + ' — Rama portfolio');
+      const body = encodeURIComponent('Hi Rama,%0A%0A' + message + '%0A%0A— ' + name + '%0A' + email);
+      window.location.href = 'mailto:uthayaakshaya@gmail.com?subject=' + subject + '&body=' + body;
+    });
+
+  </script>
+
+  <!-- Contact & social links -->
+
+</body>
+
+</html>
