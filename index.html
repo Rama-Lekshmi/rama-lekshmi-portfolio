@@ -851,6 +851,26 @@
       transform: rotate(-2deg)
     }
 
+    .sketchGrid .sA {
+      grid-column: span 3;
+      grid-row: span 2;
+    }
+
+    .sketchGrid .sB {
+      grid-column: span 3;
+      grid-row: span 1;
+    }
+
+    .sketchGrid .sC {
+      grid-column: span 3;
+      grid-row: span 2;
+    }
+
+    .sketchGrid .sD {
+      grid-column: span 3;
+      grid-row: span 1;
+    }
+
     /* creative desk + future updates */
     .creativeDesk {
       display: grid;
@@ -1197,7 +1217,6 @@
       color: #a89bab;
       margin-top: 18px
     }
-
 
     /* project cards open into dedicated case-study screens */
     .projectCard {
@@ -1735,6 +1754,15 @@
     }
 
     @media(max-width:900px) {
+      .artGallerySheet {
+        padding: 28px 22px 45px;
+      }
+
+      .artGalleryGrid {
+        columns: 2 220px;
+      }
+
+
       .projectSheet {
         padding: 28px 22px 45px
       }
@@ -1807,6 +1835,12 @@
       transform: translateX(35px)
     }
 
+    @media(max-width:600px) {
+      .reveal.fromTop:not(.left):not(.right) {
+        transform: translateY(-35px);
+      }
+    }
+
     .reveal.on {
       opacity: 1;
       transform: none
@@ -1826,6 +1860,493 @@
 
     .delay4 {
       transition-delay: .32s
+    }
+
+    /* sketchbook image galleries */
+    .artGalleryCard {
+      cursor: pointer;
+    }
+
+    .artGalleryCard .sketchVisual img {
+      transition: transform .35s ease;
+    }
+
+    .artGalleryCard:hover .sketchVisual img {
+      transform: scale(1.035);
+    }
+
+    .artGalleryModal {
+      position: fixed;
+      inset: 0;
+      z-index: 3050;
+      display: none;
+      overflow-y: auto;
+    }
+
+    .artGalleryModal.open {
+      display: block;
+    }
+
+    .artGalleryBackdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(45, 38, 49, .76);
+      backdrop-filter: blur(9px);
+      opacity: 0;
+      transition: opacity .35s ease;
+    }
+
+    .artGalleryModal.open .artGalleryBackdrop {
+      opacity: 1;
+    }
+
+    .artGallerySheet {
+      position: relative;
+      width: min(1120px, calc(100% - 34px));
+      min-height: calc(100vh - 34px);
+      margin: 17px auto;
+      padding: 34px 42px 55px;
+      background: var(--cream);
+      border: 2px solid var(--ink);
+      border-radius: 26px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .24);
+      opacity: 0;
+      transform: translateY(28px) scale(.98);
+      transition: transform .45s cubic-bezier(.2, .85, .22, 1), opacity .3s ease;
+    }
+
+    .artGalleryModal.open .artGallerySheet {
+      opacity: 1;
+      transform: none;
+    }
+
+    .artGalleryClose {
+      position: absolute;
+      top: 20px;
+      right: 22px;
+      width: 42px;
+      height: 42px;
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+      background: var(--paper);
+      font: 1.35rem var(--body);
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 3px 4px 0 var(--ink);
+      z-index: 5;
+    }
+
+    .artGalleryTop {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-right: 62px;
+      gap: 20px;
+    }
+
+    .artGalleryBack,
+    #artGalleryCount {
+      border: 0;
+      background: transparent;
+      padding: 0;
+      color: var(--muted);
+      font: .95rem var(--note);
+      cursor: pointer;
+    }
+
+    .artGalleryHero {
+      max-width: 760px;
+      margin: 52px 0 38px;
+    }
+
+    .artGalleryHero h2 {
+      font: 1.8rem var(--note);
+      line-height: 1;
+      margin: 8px 0 12px;
+    }
+
+    .artGalleryHero p {
+      max-width: 660px;
+      color: var(--muted);
+      font-size: .96rem;
+      margin: 0;
+    }
+
+    .artGalleryGrid {
+      columns: 3 240px;
+      column-gap: 18px;
+    }
+
+    .artGalleryItem {
+      break-inside: avoid;
+      margin: 0 0 18px;
+      background: var(--paper);
+      border: 2px solid var(--ink);
+      border-radius: 10px;
+      padding: 9px 9px 30px;
+      box-shadow: 5px 7px 0 rgba(62, 53, 64, .09);
+      position: relative;
+      transform: rotate(var(--gallery-tilt, 0deg));
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    .artGalleryItem:nth-child(3n+1) {
+      --gallery-tilt: -1.2deg;
+    }
+
+    .artGalleryItem:nth-child(3n+2) {
+      --gallery-tilt: 1deg;
+    }
+
+    .artGalleryItem:nth-child(3n) {
+      --gallery-tilt: -.5deg;
+    }
+
+    .artGalleryItem:hover {
+      transform: translateY(-5px) rotate(0deg);
+      box-shadow: 8px 11px 0 rgba(62, 53, 64, .13);
+      z-index: 2;
+    }
+
+    .artGalleryItem img {
+      width: 100%;
+      height: auto;
+      max-height: 460px;
+      object-fit: contain;
+      border: 1px solid rgba(62, 53, 64, .18);
+      border-radius: 5px;
+      background: #fffaf3;
+    }
+
+    .artGalleryItem figcaption {
+      position: absolute;
+      bottom: 6px;
+      left: 12px;
+      font: .82rem var(--note);
+      color: var(--muted);
+    }
+
+    /* music / animation gallery */
+    .animationCard {
+      cursor: pointer;
+    }
+
+    .musicAnimationCardArt {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      min-height: 100%;
+      text-align: center;
+      isolation: isolate;
+    }
+
+    .musicAnimationCover {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .musicCardLabel {
+      position: relative;
+      z-index: 2;
+      font: 1.22rem var(--note);
+      line-height: 1.05;
+      letter-spacing: .01em;
+      color: var(--ink);
+      transform: rotate(-1.5deg);
+    }
+
+    .musicCardLabel span {
+      display: block;
+      margin-top: 8px;
+      font: .78rem var(--note);
+      color: var(--muted);
+      transform: rotate(1deg);
+    }
+
+    .musicCardLabel::after {
+      content: '';
+      display: block;
+      width: 54px;
+      height: 2px;
+      margin: 10px auto 0;
+      background: var(--ink);
+      opacity: .45;
+      transform: rotate(-2deg);
+      border-radius: 999px;
+    }
+
+    .animationModal {
+      position: fixed;
+      inset: 0;
+      z-index: 3100;
+      display: none;
+      overflow-y: auto;
+    }
+
+    .animationModal.open {
+      display: block;
+    }
+
+    .animationModalBackdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(45, 38, 49, .76);
+      backdrop-filter: blur(9px);
+      opacity: 0;
+      transition: opacity .35s ease;
+    }
+
+    .animationModal.open .animationModalBackdrop {
+      opacity: 1;
+    }
+
+    .animationSheet {
+      position: relative;
+      width: min(1120px, calc(100% - 34px));
+      min-height: calc(100vh - 34px);
+      margin: 17px auto;
+      padding: 34px 42px 55px;
+      background: var(--cream);
+      border: 2px solid var(--ink);
+      border-radius: 26px;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, .24);
+      opacity: 0;
+      transform: translateY(28px) scale(.98);
+      transition: transform .45s cubic-bezier(.2, .85, .22, 1), opacity .3s ease;
+    }
+
+    .animationModal.open .animationSheet {
+      opacity: 1;
+      transform: none;
+    }
+
+    .animationClose {
+      position: absolute;
+      top: 20px;
+      right: 22px;
+      width: 42px;
+      height: 42px;
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+      background: var(--paper);
+      font: 1.35rem var(--body);
+      line-height: 1;
+      cursor: pointer;
+      box-shadow: 3px 4px 0 var(--ink);
+      z-index: 5;
+    }
+
+    .animationSheetTop {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-right: 62px;
+      gap: 20px;
+    }
+
+    .animationBack {
+      border: 0;
+      background: transparent;
+      padding: 0;
+      color: var(--muted);
+      font: .95rem var(--note);
+      cursor: pointer;
+    }
+
+    .animationCount {
+      font: .9rem var(--note);
+      color: var(--muted);
+    }
+
+    .animationHero {
+      max-width: 760px;
+      margin: 52px 0 38px;
+    }
+
+    .animationHero h2 {
+      font: 1.8rem var(--note);
+      line-height: 1;
+      letter-spacing: .01em;
+      margin: 8px 0 12px;
+    }
+
+    .animationHero p {
+      max-width: 660px;
+      color: var(--muted);
+      font-size: .96rem;
+      margin: 0;
+    }
+
+    .animationGrid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 22px;
+      align-items: start;
+    }
+
+    .animationReel {
+      position: relative;
+      display: block;
+      min-height: 245px;
+      padding: 18px 18px 24px;
+      background: var(--paper);
+      border: 2px solid var(--ink);
+      border-radius: 12px;
+      color: var(--ink);
+      text-decoration: none;
+      box-shadow: 7px 9px 0 rgba(62, 53, 64, .1);
+      transition: transform .22s ease, box-shadow .22s ease;
+      overflow: hidden;
+    }
+
+    .animationReel:nth-child(1) {
+      grid-column: span 5;
+      transform: rotate(-2.2deg);
+    }
+
+    .animationReel:nth-child(2) {
+      grid-column: span 3;
+      transform: rotate(1.6deg);
+    }
+
+    .animationReel:nth-child(3) {
+      grid-column: span 4;
+      transform: rotate(-1deg);
+    }
+
+    .animationReel:nth-child(4) {
+      grid-column: span 5;
+      transform: rotate(2.4deg);
+    }
+
+    .animationReel:nth-child(5) {
+      grid-column: span 3;
+      transform: rotate(-1.7deg);
+    }
+
+    .animationReel:nth-child(6) {
+      grid-column: span 4;
+      transform: rotate(1.2deg);
+    }
+
+    .animationReel:nth-child(7) {
+      grid-column: span 3;
+      transform: rotate(-2deg);
+    }
+
+    .animationReel:hover {
+      transform: translateY(-8px) rotate(0deg) !important;
+      box-shadow: 10px 14px 0 rgba(62, 53, 64, .13);
+      z-index: 2;
+    }
+
+    .animationReel::before {
+      content: 'REEL';
+      position: absolute;
+      top: 12px;
+      right: 13px;
+      border: 1.5px solid var(--ink);
+      border-radius: 999px;
+      padding: 3px 8px;
+      font: 700 .62rem var(--body);
+      letter-spacing: .08em;
+      background: var(--butter);
+      z-index: 2;
+    }
+
+    .animationReel:nth-child(2)::before,
+    .animationReel:nth-child(6)::before {
+      background: var(--lav);
+    }
+
+    .animationReel:nth-child(3)::before,
+    .animationReel:nth-child(5)::before {
+      background: var(--blue);
+    }
+
+    .animationReel:nth-child(4)::before,
+    .animationReel:nth-child(7)::before {
+      background: var(--pink);
+    }
+
+    .reelArt {
+      height: 150px;
+      border: 1.5px solid var(--ink);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+      background-size: 180% 180%;
+      background-position: center;
+    }
+
+    .reelArt1 {
+      background: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, .65), transparent 25%), linear-gradient(135deg, var(--lav), var(--pink));
+    }
+
+    .reelArt2 {
+      background: linear-gradient(135deg, var(--butter), var(--peach));
+    }
+
+    .reelArt3 {
+      background: linear-gradient(135deg, var(--blue), var(--lav));
+    }
+
+    .reelArt4 {
+      background: linear-gradient(135deg, var(--green), var(--butter));
+    }
+
+    .reelArt5 {
+      background: linear-gradient(135deg, var(--peach), var(--pink));
+    }
+
+    .reelArt6 {
+      background: linear-gradient(135deg, var(--pink), var(--blue));
+    }
+
+    .reelArt7 {
+      background: linear-gradient(135deg, var(--lav), var(--green));
+    }
+
+    .reelArt small {
+      position: absolute;
+      left: 12px;
+      bottom: 9px;
+      font: .7rem var(--body);
+      font-weight: 700;
+      letter-spacing: .08em;
+      color: rgba(62, 53, 64, .58);
+    }
+
+    .reelMeta {
+      padding-top: 14px;
+    }
+
+    .reelTitle {
+      font: 1rem var(--note);
+      line-height: 1.12;
+      margin: 0;
+      max-width: calc(100% - 28px);
+    }
+
+    .reelSub {
+      margin-top: 5px;
+      color: var(--muted);
+      font-size: .68rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 700;
+    }
+
+    .reelArrow {
+      position: absolute;
+      right: 17px;
+      bottom: 20px;
+      font: .95rem var(--note);
     }
 
     /* responsive */
@@ -2211,7 +2732,6 @@
       }
     }
 
-
     /* visitor notebook + message box */
     .notebookShell {
       background: #B99A7A;
@@ -2423,7 +2943,6 @@
       }
     }
 
-
     /* Verdura carousel + touch-safe drawing */
     .verduraPreview {
       background: #f0e8df;
@@ -2518,7 +3037,6 @@
       }
     }
 
-
     /* Verdura project intro — soft gradient studio backdrop */
     .projectSheet.verduraProject {
       background:
@@ -2606,7 +3124,6 @@
     .projectSheet.meloProject .projectHeroCopy>p {
       max-width: 700px
     }
-
 
     /* PediaPredict project intro — warm clinical / peach-blue hue */
     .projectSheet.pediaProject {
@@ -2721,8 +3238,6 @@
         right: 16px
       }
     }
-
-
 
     /* Melo thumbnail: keep the handwritten caption clear of the project pill */
     .projectCard[data-project="melo"] .meloCardPreview::after {
@@ -2909,6 +3424,103 @@
         bottom: 10px !important;
       }
     }
+
+    @media(max-width:600px) {
+      .artGallerySheet {
+        width: calc(100% - 16px);
+        margin: 8px auto;
+        border-radius: 18px;
+      }
+
+      .artGalleryGrid {
+        columns: 1;
+      }
+
+      .artGalleryTop {
+        padding-right: 48px;
+      }
+    }
+
+    /* FINAL MOBILE RESPONSIVE CONTAINMENT */
+    @media (max-width: 600px) {
+
+      html,
+      body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      .section,
+      .bridge,
+      footer {
+        overflow-x: clip;
+      }
+
+      .designGrid,
+      .designGrid>*,
+      .designCard,
+      .preview,
+      .hero,
+      .heroVisual,
+      .heroCopy {
+        min-width: 0;
+        max-width: 100%;
+      }
+
+      /* Mobile nav: brand on top + a genuinely scrollable tab rail.
+         The desktop nav structure/appearance is unchanged. */
+      .navInner {
+        display: block;
+        width: 100%;
+        min-width: 0;
+      }
+
+      .brand {
+        display: block;
+        width: max-content;
+        max-width: 100%;
+        padding-bottom: 6px;
+      }
+
+      .tabsViewport {
+        display: block;
+        width: 100%;
+        min-width: 0;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior-x: contain;
+        scrollbar-width: none;
+        touch-action: pan-x;
+        padding: 0;
+        margin: 0;
+      }
+
+      .tabsViewport::-webkit-scrollbar {
+        display: none;
+      }
+
+      .tabsViewport .tabs {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: flex-end;
+        justify-content: flex-start;
+        gap: 6px;
+        width: max-content;
+        min-width: 620px;
+        max-width: none;
+        overflow: visible;
+        white-space: nowrap;
+      }
+
+      .tabsViewport .tabs a {
+        flex: 0 0 auto !important;
+        flex-shrink: 0 !important;
+        white-space: nowrap;
+      }
+    }
   </style>
 </head>
 
@@ -2919,8 +3531,10 @@
   <div class="cursorText">✦</div>
   <header class="nav">
     <div class="navInner"><a class="brand" href="#top">Rama Lekshmi<small>designer · developer · artist</small></a>
-      <nav class="tabs"><a href="#work">Work</a><a href="#build">Build</a><a href="#sketchbook">Sketchbook</a><a
-          href="#future">Future</a><a href="#about">About</a><a href="#contact">Say Hi</a></nav>
+      <div class="tabsViewport">
+        <nav class="tabs"><a href="#work">Work</a><a href="#build">Build</a><a href="#sketchbook">Sketchbook</a><a
+            href="#future">Future</a><a href="#about">About</a><a href="#contact">Say Hi</a></nav>
+      </div>
     </div>
   </header>
   <main id="top">
@@ -3042,7 +3656,117 @@
       </div>
     </section>
 
-    <div class="projectModal" <div class="projectModal" id="projectModal" aria-hidden="true">
+    <div class="artGalleryModal" id="artGalleryModal" aria-hidden="true">
+      <div class="artGalleryBackdrop" data-close-art-gallery></div>
+      <div class="artGallerySheet" role="dialog" aria-modal="true" aria-labelledby="artGalleryTitle">
+        <button class="artGalleryClose" type="button" aria-label="Close artwork gallery"
+          data-close-art-gallery>×</button>
+        <div class="artGalleryTop">
+          <button class="artGalleryBack" type="button" data-close-art-gallery>← back to sketchbook</button>
+          <span id="artGalleryCount">gallery</span>
+        </div>
+        <div class="artGalleryHero">
+          <div class="eyebrow">✿ from the sketchbook</div>
+          <h2 id="artGalleryTitle">Sketches</h2>
+          <p id="artGalleryDescription">A little collection of work from my sketchbook.</p>
+        </div>
+        <div class="artGalleryGrid" id="artGalleryGrid"></div>
+      </div>
+    </div>
+
+    <div class="animationModal" id="animationModal" aria-hidden="true">
+      <div class="animationModalBackdrop" data-close-animation></div>
+      <div class="animationSheet" role="dialog" aria-modal="true" aria-labelledby="animationModalTitle">
+        <button class="animationClose" type="button" aria-label="Close music animations gallery"
+          data-close-animation>×</button>
+
+        <div class="animationSheetTop">
+          <button class="animationBack" type="button" data-close-animation>← back to sketchbook</button>
+          <span class="animationCount">07 little animations</span>
+        </div>
+
+        <div class="animationHero">
+          <div class="eyebrow">♫ music + motion</div>
+          <h2 id="animationModalTitle">Music Animations</h2>
+          <p>A small collection of music-inspired animations, drawn and edited frame by frame. Tap a card to watch the
+            original Reel.</p>
+        </div>
+
+        <div class="animationGrid">
+          <a class="animationReel"
+            href="https://www.instagram.com/reel/DcOB8pbTCCu/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA=="
+            target="_blank" rel="noopener noreferrer">
+            <div class="reelArt reelArt1"><small>01 / 07</small></div>
+            <div class="reelMeta">
+              <h3 class="reelTitle">Vaanathayum Etti Pudippen</h3>
+              <div class="reelSub">music animation</div>
+            </div><span class="reelArrow">↗</span>
+          </a>
+
+          <a class="animationReel"
+            href="https://www.instagram.com/reel/DaaKQK6zc3I/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA=="
+            target="_blank" rel="noopener noreferrer">
+            <div class="reelArt reelArt2"><small>02 / 07</small></div>
+            <div class="reelMeta">
+              <h3 class="reelTitle">Kadhaippoma</h3>
+              <div class="reelSub">music animation</div>
+            </div><span class="reelArrow">↗</span>
+          </a>
+
+          <a class="animationReel"
+            href="https://www.instagram.com/reel/DZmqTODzSCJ/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA=="
+            target="_blank" rel="noopener noreferrer">
+            <div class="reelArt reelArt3"><small>03 / 07</small></div>
+            <div class="reelMeta">
+              <h3 class="reelTitle">Aadi Pona Aavani</h3>
+              <div class="reelSub">music animation</div>
+            </div><span class="reelArrow">↗</span>
+          </a>
+
+          <a class="animationReel"
+            href="https://www.instagram.com/reel/DX1UW7qS8ik/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA=="
+            target="_blank" rel="noopener noreferrer">
+            <div class="reelArt reelArt4"><small>04 / 07</small></div>
+            <div class="reelMeta">
+              <h3 class="reelTitle">Santhippoma</h3>
+              <div class="reelSub">music animation</div>
+            </div><span class="reelArrow">↗</span>
+          </a>
+
+          <a class="animationReel"
+            href="https://www.instagram.com/reel/DX35gMGSWv_/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA=="
+            target="_blank" rel="noopener noreferrer">
+            <div class="reelArt reelArt5"><small>05 / 07</small></div>
+            <div class="reelMeta">
+              <h3 class="reelTitle">Kannukulla</h3>
+              <div class="reelSub">music animation</div>
+            </div><span class="reelArrow">↗</span>
+          </a>
+
+          <a class="animationReel"
+            href="https://www.instagram.com/reel/DXWeQCqEjyo/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA=="
+            target="_blank" rel="noopener noreferrer">
+            <div class="reelArt reelArt6"><small>06 / 07</small></div>
+            <div class="reelMeta">
+              <h3 class="reelTitle">Pasapukkali</h3>
+              <div class="reelSub">music animation</div>
+            </div><span class="reelArrow">↗</span>
+          </a>
+
+          <a class="animationReel"
+            href="https://www.instagram.com/reel/Dbk_hkeTVjg/?utm_source=ig_web_copy_link&stkn=MzRlODBiNWFlZA=="
+            target="_blank" rel="noopener noreferrer">
+            <div class="reelArt reelArt7"><small>07 / 07</small></div>
+            <div class="reelMeta">
+              <h3 class="reelTitle">Pesamale</h3>
+              <div class="reelSub">music animation</div>
+            </div><span class="reelArrow">↗</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="projectModal" id="projectModal" aria-hidden="true">
       <div class="projectModalBackdrop" data-close-project></div>
       <section class="projectSheet" role="dialog" aria-modal="true">
         <button class="projectClose" type="button" data-close-project aria-label="Close project">×</button>
@@ -3097,41 +3821,36 @@
           <div class="sectionNumber">02</div>
         </div>
         <div class="sketchGrid">
-          <div class="sketch sA reveal delay1">
+          <div class="sketch sA reveal delay1 artGalleryCard" role="button" tabindex="0" data-gallery="sketches"
+            aria-label="Open sketches gallery">
             <div class="sketchVisual">
-              <div class="sketchPlaceholder">YOUR<br>ARTWORK</div>
+              <img src="assets/sketch/sketch-01.png" alt="Sketchbook sketch" loading="lazy">
             </div>
-            <div class="cap">digital illustration</div>
+            <div class="cap">sketches ↗</div>
           </div>
-          <div class="sketch sB reveal delay2">
+
+          <div class="sketch sB reveal delay2 artGalleryCard" role="button" tabindex="0" data-gallery="mandalas"
+            aria-label="Open mandalas gallery">
             <div class="sketchVisual">
-              <div class="sketchPlaceholder" style="background:var(--butter)">CHARACTER<br>ART</div>
+              <img src="assets/mandala/mandala-01.png" alt="Mandala artwork" loading="lazy">
             </div>
-            <div class="cap">character study</div>
+            <div class="cap">mandalas ↗</div>
           </div>
-          <div class="sketch sC reveal delay3">
+
+          <div class="sketch sC reveal delay3 animationCard" role="button" tabindex="0"
+            aria-label="Open music animations gallery">
             <div class="sketchVisual">
-              <div class="sketchPlaceholder" style="background:var(--blue)">MUSIC<br>ANIMATION</div>
+              <img class="musicAnimationCover" src="assets/music/cover.jpg" alt="Music animations cover" loading="lazy">
             </div>
-            <div class="cap">music / animation</div>
+            <div class="cap">music animations ↗</div>
           </div>
-          <div class="sketch sD reveal delay1">
+
+          <div class="sketch sD reveal delay1 artGalleryCard" role="button" tabindex="0" data-gallery="doodles"
+            aria-label="Open doodles gallery">
             <div class="sketchVisual">
-              <div class="sketchPlaceholder" style="background:var(--green)">DOODLES</div>
+              <img src="assets/doodle/doodle-02.png" alt="Doodle artwork" loading="lazy">
             </div>
-            <div class="cap">tiny experiments</div>
-          </div>
-          <div class="sketch sE reveal delay2">
-            <div class="sketchVisual">
-              <div class="sketchPlaceholder" style="background:var(--peach)">KAWAII<br>STUDIES</div>
-            </div>
-            <div class="cap">kawaii sketches</div>
-          </div>
-          <div class="sketch sF reveal delay3">
-            <div class="sketchVisual">
-              <div class="sketchPlaceholder" style="background:var(--lav)">KRITA<br>FRAMES</div>
-            </div>
-            <div class="cap">animation frames</div>
+            <div class="cap">doodles ↗</div>
           </div>
         </div>
       </div>
@@ -3166,7 +3885,6 @@
         </div>
       </div>
     </section>
-
 
     <section class="section alt" id="future">
       <div class="wrap">
@@ -3228,7 +3946,7 @@
         </div>
         <div class="notebookShell reveal">
           <div class="notebookPaper">
-            <div class="notebookLabel">RAMA'S LITTLE NOTEBOOK</div>
+            <div class="notebookLabel">MY LITTLE NOTEBOOK</div>
             <canvas id="dc" width="900" height="330"
               aria-label="A blank drawing board where visitors can draw"></canvas>
             <div class="notebookHint">draw something tiny, silly, beautiful or completely random ♡</div>
@@ -3281,12 +3999,85 @@
     </footer>
   </main>
   <script>
+    // Mobile nav: mouse/trackpad drag fallback; touch remains native horizontal scrolling.
+    const tabsViewport = document.querySelector('.tabsViewport');
+    if (tabsViewport && window.matchMedia('(max-width: 600px)').matches) {
+      let draggingTabs = false, tabsStartX = 0, tabsStartScroll = 0, tabsMoved = false;
+
+      tabsViewport.addEventListener('pointerdown', e => {
+        if (e.pointerType === 'mouse') {
+          draggingTabs = true;
+          tabsMoved = false;
+          tabsStartX = e.clientX;
+          tabsStartScroll = tabsViewport.scrollLeft;
+          tabsViewport.setPointerCapture?.(e.pointerId);
+        }
+      });
+
+      tabsViewport.addEventListener('pointermove', e => {
+        if (!draggingTabs) return;
+        const dx = e.clientX - tabsStartX;
+        if (Math.abs(dx) > 3) tabsMoved = true;
+        tabsViewport.scrollLeft = tabsStartScroll - dx;
+      });
+
+      const stopTabsDrag = () => {
+        draggingTabs = false;
+      };
+      tabsViewport.addEventListener('pointerup', stopTabsDrag);
+      tabsViewport.addEventListener('pointercancel', stopTabsDrag);
+      tabsViewport.addEventListener('lostpointercapture', stopTabsDrag);
+
+      tabsViewport.addEventListener('click', e => {
+        if (tabsMoved) {
+          e.preventDefault();
+          e.stopPropagation();
+          tabsMoved = false;
+        }
+      }, true);
+    }
+
     // cursor
     const dot = document.getElementById('cursor'), ring = document.getElementById('cursorRing'); let mx = innerWidth / 2, my = innerHeight / 2, rx = mx, ry = my; document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx + 'px'; dot.style.top = my + 'px' }); function cursorLoop() { rx += (mx - rx) * .14; ry += (my - ry) * .14; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(cursorLoop) } cursorLoop(); document.querySelectorAll('a,.btn,.designCard,.tool,.flipStage,.bridgeCard,.sketch').forEach(el => { el.addEventListener('mouseenter', () => document.body.classList.add('hovering')); el.addEventListener('mouseleave', () => document.body.classList.remove('hovering')) });
     // progress
     addEventListener('scroll', () => { const h = document.documentElement.scrollHeight - innerHeight; document.getElementById('progress').style.width = (h ? scrollY / h * 100 : 0) + '%' });
     // reveal on scroll
-    const io = new IntersectionObserver(entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on') }), { threshold: .12 }); document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    // Desktop: original one-time reveal. Mobile: replay the exact same
+    // transition every time an element re-enters the viewport. The forced
+    // reflow guarantees the browser paints the hidden state before .on is
+    // restored, including when the user quickly reverses scroll direction.
+    const revealEls = document.querySelectorAll('.reveal');
+    const isMobile = window.matchMedia('(max-width: 600px)').matches;
+    let lastScrollY = window.scrollY;
+    let scrollDirection = 'down';
+
+    if (isMobile) {
+      window.addEventListener('scroll', () => {
+        const y = window.scrollY;
+        if (Math.abs(y - lastScrollY) > 1) scrollDirection = y > lastScrollY ? 'down' : 'up';
+        lastScrollY = y;
+      }, { passive: true });
+    }
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        const el = e.target;
+        if (e.isIntersecting) {
+          if (isMobile) {
+            el.classList.toggle('fromTop', scrollDirection === 'up');
+            el.classList.remove('on');
+            void el.offsetWidth;
+            requestAnimationFrame(() => el.classList.add('on'));
+          } else {
+            el.classList.add('on');
+            io.unobserve(el);
+          }
+        } else if (isMobile) {
+          el.classList.remove('on');
+        }
+      });
+    }, { threshold: .12 });
+    requestAnimationFrame(() => revealEls.forEach(el => io.observe(el)));
     // flip card
     const flip = document.getElementById('flipStage'); flip.addEventListener('click', () => flip.classList.toggle('flipped'));
 
@@ -3353,6 +4144,109 @@
     function renderProjectContent() { const p = projectData[activeProject]; if (!p) return; if (p.wip) { projectSheetCount.textContent = 'work in progress'; projectScreensArea.innerHTML = '<div class="projectWipCard"><div><strong>this one is still on my drawing board ✎</strong><p>I haven\'t finished the screens yet, so I\'d rather show it honestly as a work in progress than fill this page with fake case-study content.</p></div></div>'; } else if (p.screens) { projectSheetCount.textContent = 'tap through the screens ♡'; projectScreensArea.innerHTML = '<div class="instantStage" id="instantStage" tabindex="0" aria-label="Tap to view the next project screen"><div class="instantStack" id="instantStack"></div><div class="instantTapHint">tap to see the next screen ↗</div></div><div class="instantControls"><button class="screenArrow" id="screenPrev" type="button">← previous</button><span class="screenIndex" id="screenIndex"></span><button class="screenArrow" id="screenNext" type="button">next →</button></div>'; bindInstant(p); } else { projectSheetCount.textContent = 'project snapshot'; projectScreensArea.innerHTML = '<div class="technicalSnapshot"><img src="' + p.image + '" alt="' + p.title + ' project screenshot"></div>'; } projectDetails.innerHTML = '<h3>A little context</h3><p>' + p.intro + '</p><h4>' + p.goal + '</h4><p>' + p.goalText + '</p><h4>What I focused on</h4><ul>' + p.decisions.map(x => '<li>' + x + '</li>').join('') + '</ul>' + (p.tech ? '<div class="technicalSnapshot"><strong>Stack</strong><p>' + p.tech + '</p></div>' : '') + (p.figma ? '<a href="' + p.figma + '" target="_blank" rel="noopener">Open Figma prototype ↗</a>' : '') + (p.github ? '<a href="' + p.github + '" target="_blank" rel="noopener">View GitHub ↗</a>' : ''); }
     function bindInstant(p) { const stage = document.getElementById('instantStage'), stack = document.getElementById('instantStack'), idx = document.getElementById('screenIndex'), prev = document.getElementById('screenPrev'), next = document.getElementById('screenNext'); let didSwipe = false; function render() { stack.innerHTML = ''; const total = p.screens.length; for (let offset = Math.min(3, total - 1); offset >= 0; offset--) { const i = (activeScreen + offset) % total; const card = document.createElement('div'); card.className = 'instantCard ' + (offset === 0 ? 'top' : offset === 1 ? 'back1' : offset === 2 ? 'back2' : 'back3'); const img = document.createElement('img'); img.src = p.screens[i]; img.alt = p.title + ' — ' + p.labels[i]; card.appendChild(img); if (offset === 0) { const label = document.createElement('div'); label.className = 'instantLabel'; label.textContent = String(activeScreen + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0') + ' · ' + p.labels[activeScreen]; card.appendChild(label) } stack.appendChild(card) } idx.textContent = String(activeScreen + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0'); prev.disabled = activeScreen === 0; next.disabled = activeScreen === total - 1; } function go(d) { const target = activeScreen + d; if (target < 0 || target >= p.screens.length) return; const top = stack.querySelector('.instantCard.top'); if (top) top.classList.add('fadeOut'); setTimeout(() => { activeScreen = target; render() }, 190) } stage.onclick = e => { if (didSwipe) { didSwipe = false; return } go(1) }; prev.onclick = e => { e.stopPropagation(); go(-1) }; next.onclick = e => { e.stopPropagation(); go(1) }; stage.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(1) } else if (e.key === 'ArrowLeft') { e.preventDefault(); go(-1) } }); let startX = 0; stage.addEventListener('pointerdown', e => { startX = e.clientX; didSwipe = false }); stage.addEventListener('pointerup', e => { const dx = e.clientX - startX; if (Math.abs(dx) > 45) { didSwipe = true; go(dx < 0 ? 1 : -1) } }); render(); }
     document.querySelectorAll('.projectCard').forEach(c => { c.addEventListener('click', () => openProject(c.dataset.project, c)); c.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openProject(c.dataset.project, c); } }) }); document.querySelectorAll('[data-close-project]').forEach(e => e.addEventListener('click', closeProject)); document.addEventListener('keydown', e => { if (e.key === 'Escape' && projectModal.classList.contains('open')) closeProject(); });
+
+    // music / animation gallery
+    const artGalleryData = {
+      sketches: {
+        title: 'Sketches',
+        description: 'Loose studies, pencil work and little ideas from my sketchbook.',
+        images: ['assets/sketch/sketch-01.png', 'assets/sketch/sketch-02.jpeg', 'assets/sketch/sketch-03.jpeg', 'assets/sketch/sketch-04.jpeg', 'assets/sketch/sketch-05.jpeg', 'assets/sketch/sketch-06.jpeg', 'assets/sketch/sketch-07.jpeg', 'assets/sketch/sketch-08.jpeg', 'assets/sketch/sketch-09.jpeg', 'assets/sketch/sketch-11.jpeg', 'assets/sketch/sketch-12.jpeg', 'assets/sketch/sketch-13.jpeg', 'assets/sketch/sketch-14.png', 'assets/sketch/sketch-15.jpeg', 'assets/sketch/sketch-16.jpeg', 'assets/sketch/sketchh.jpeg']
+      },
+      mandalas: {
+        title: 'Mandalas',
+        description: 'Pattern, repetition and quiet little details.',
+        images: ['assets/mandala/mandala-01.png', 'assets/mandala/mandala-02.png', 'assets/mandala/mandala-03.jpeg', 'assets/mandala/mandala-04.jpeg', 'assets/mandala/mandala-05.jpeg', 'assets/mandala/mandala-06.jpeg']
+      },
+      doodles: {
+        title: 'Doodles',
+        description: 'Random little drawings, characters and bits of visual whimsy.',
+        images: ['assets/doodle/doodle-02.png', 'assets/doodle/doodle-03.png', 'assets/doodle/doodle-04.jpeg', 'assets/doodle/doodle-05.jpeg', 'assets/doodle/doodle-06.jpeg', 'assets/doodle/doodle-07.jpeg', 'assets/doodle/doodle-08.jpeg', 'assets/doodle/doodle-09.png', 'assets/doodle/doodle-10.jpeg', 'assets/doodle/doodle-11.jpeg', 'assets/doodle/doodle-12.jpeg', 'assets/doodle/doodle-13.png', 'assets/doodle/doodle-14.png', 'assets/doodle/doodle-15.jpeg', 'assets/doodle/doodle-16.jpeg', 'assets/doodle/doodle-17.jpeg', 'assets/doodle/doodle-18.jpeg', 'assets/doodle/doodle-19.jpeg']
+      }
+    };
+
+    const artGalleryModal = document.getElementById('artGalleryModal');
+    const artGalleryGrid = document.getElementById('artGalleryGrid');
+    const artGalleryTitle = document.getElementById('artGalleryTitle');
+    const artGalleryDescription = document.getElementById('artGalleryDescription');
+    const artGalleryCount = document.getElementById('artGalleryCount');
+
+    function openArtGallery(name) {
+      const gallery = artGalleryData[name];
+      if (!gallery || !artGalleryModal) return;
+
+      artGalleryTitle.textContent = gallery.title;
+      artGalleryDescription.textContent = gallery.description;
+      artGalleryCount.textContent = `${gallery.images.length} pieces`;
+      artGalleryGrid.innerHTML = gallery.images.map((src, i) => `
+        <figure class="artGalleryItem">
+          <img src="${src}" alt="${gallery.title} artwork ${i + 1}" loading="lazy">
+          <figcaption>${String(i + 1).padStart(2, '0')}</figcaption>
+        </figure>
+      `).join('');
+
+      artGalleryModal.classList.add('open');
+      artGalleryModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeArtGallery() {
+      if (!artGalleryModal) return;
+      artGalleryModal.classList.remove('open');
+      artGalleryModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.artGalleryCard').forEach(card => {
+      const open = () => openArtGallery(card.dataset.gallery);
+      card.addEventListener('click', open);
+      card.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          open();
+        }
+      });
+    });
+
+    document.querySelectorAll('[data-close-art-gallery]').forEach(el => {
+      el.addEventListener('click', closeArtGallery);
+    });
+
+    const animationModal = document.getElementById('animationModal');
+    const animationCard = document.querySelector('.animationCard');
+
+    function openAnimationGallery() {
+      if (!animationModal) return;
+      animationModal.classList.add('open');
+      animationModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeAnimationGallery() {
+      if (!animationModal) return;
+      animationModal.classList.remove('open');
+      animationModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    animationCard?.addEventListener('click', openAnimationGallery);
+    animationCard?.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openAnimationGallery();
+      }
+    });
+
+    document.querySelectorAll('[data-close-animation]').forEach(el => {
+      el.addEventListener('click', closeAnimationGallery);
+    });
+
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && artGalleryModal?.classList.contains('open')) {
+        closeArtGallery();
+      } else if (e.key === 'Escape' && animationModal?.classList.contains('open')) {
+        closeAnimationGallery();
+      }
+    });
 
     // leave a message — opens the visitor's email client with the message addressed to Rama.
     document.getElementById('messageForm')?.addEventListener('submit', e => {
