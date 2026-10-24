@@ -4,7 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rama Lekshmi — Designer • Developer • Artist</title>
+  <title>Rama Lekshmi — AI/ML Engineer • Python Developer • Frontend</title>
+  <meta name="description"
+    content="Portfolio of Rama Lekshmi, an AI/ML engineer building machine-learning systems in Python, with frontend and design skills to ship them as usable products.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -466,7 +468,7 @@
     }
 
     .labArt .orb:after {
-      content: 'UI  +  CODE';
+      content: 'DATA + ML';
       position: absolute;
       left: 46px;
       bottom: 42px;
@@ -1857,14 +1859,10 @@
       transform: translateX(35px)
     }
 
-    @media(max-width:600px) {
-
-      /* On upward re-entry, every reveal uses the same vertical entrance.
-         This intentionally overrides the desktop left/right variants on mobile
-         so project cards, sketchbook cards, intro elements, etc. all replay. */
-      .reveal.fromTop {
-        transform: translateY(-35px) !important;
-      }
+    /* On upward re-entry (all screen sizes), elements drop in from above.
+       :not(.on) so the element settles to its normal position once revealed. */
+    .reveal.fromTop:not(.on) {
+      transform: translateY(-35px);
     }
 
     .reveal.on {
@@ -3556,10 +3554,10 @@
   <div id="cursorRing"></div>
   <div class="cursorText">✦</div>
   <header class="nav">
-    <div class="navInner"><a class="brand" href="#top">Rama Lekshmi<small>designer · developer · artist</small></a>
+    <div class="navInner"><a class="brand" href="#top">Rama Lekshmi<small>ai/ml engineer · python · frontend</small></a>
       <div class="tabsViewport">
-        <nav class="tabs"><a href="#work">Work</a><a href="#build">Build</a><a href="#sketchbook">Sketchbook</a><a
-            href="#future">Future</a><a href="#about">About</a><a href="#contact">Say Hi</a></nav>
+        <nav class="tabs"><a href="#work">Projects</a><a href="#build">Skills</a><a href="#sketchbook">Creative</a><a
+            href="#future">Roadmap</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
       </div>
     </div>
   </header>
@@ -3570,32 +3568,33 @@
       <div class="aurora a3"></div>
       <div class="wrap" style="display:contents">
         <div class="heroCopy reveal left">
-          <div class="availability"><i></i> currently designing & building</div>
+          <div class="availability"><i></i> open to AI/ML engineer roles</div>
           <h1>Hi, I'm<br><span>Rama</span> Lekshmi</h1>
-          <div class="role">UI/UX Designer <b>✦</b> Frontend Developer <b>✦</b> Digital Artist</div>
-          <p class="heroDesc">I like the space where visual design meets code — designing thoughtful interfaces,
-            building them for the web, and keeping a sketchbook open on the side.</p>
-          <div class="ctaRow"><a class="btn btnPrimary" href="#work">Explore my work →</a><a class="btn btnSecondary"
-              href="#sketchbook">Open sketchbook ✎</a></div>
+          <div class="role">AI/ML Engineer <b>✦</b> Python Developer <b>✦</b> Frontend &amp; UI</div>
+          <p class="heroDesc">I build machine-learning systems in Python — from data and model training to the interface
+            people actually use. My design and frontend background means I can take a model all the way to a working
+            product.</p>
+          <div class="ctaRow"><a class="btn btnPrimary" href="#work">View ML projects →</a><a class="btn btnSecondary"
+              href="#sketchbook">See my creative side ✎</a></div>
         </div>
         <div class="heroVisual reveal right">
           <div class="flipStage" id="flipStage">
             <div class="flipCard">
               <div class="face front">
-                <div class="faceHeader"><span>my little creative lab ♡</span><span class="tinyTag">front</span></div>
+                <div class="faceHeader"><span>my little ML lab ♡</span><span class="tinyTag">front</span></div>
                 <div class="labArt">
-                  <div class="orb"></div><span class="sticker s1">Figma ✦</span><span class="sticker s2">draw →
-                    code</span><span class="sticker s3">make it useful</span>
+                  <div class="orb"></div><span class="sticker s1">Python ✦</span><span class="sticker s2">data →
+                    model</span><span class="sticker s3">make it useful (and shippable)</span>
                 </div>
-                <p class="faceFoot">design brain on · sketchbook nearby</p>
+                <p class="faceFoot">models training · sketchbook nearby</p>
               </div>
               <div class="face back">
-                <div class="faceHeader"><span>behind the pixels</span><span class="tinyTag">back</span></div>
+                <div class="faceHeader"><span>behind the models</span><span class="tinyTag">back</span></div>
                 <div class="backList">
-                  <div class="backItem"><span>UI / UX</span><span>Figma · Prototyping</span></div>
-                  <div class="backItem"><span>Frontend</span><span>HTML · CSS · JS</span></div>
-                  <div class="backItem"><span>AI / ML</span><span>Python · ML projects</span></div>
-                  <div class="backItem"><span>Art</span><span>Krita · Illustration</span></div>
+                  <div class="backItem"><span>AI / ML</span><span>scikit-learn · XGBoost · TensorFlow</span></div>
+                  <div class="backItem"><span>Python</span><span>Data · Modelling · Streamlit</span></div>
+                  <div class="backItem"><span>Frontend</span><span>HTML · CSS · JS · Flask</span></div>
+                  <div class="backItem"><span>Design + Art</span><span>Figma · Krita</span></div>
                 </div>
                 <div style="height:90px;display:grid;place-items:center;font-size:42px">✦ ♡ ✎</div>
                 <p class="faceFoot">same person, different canvas.</p>
@@ -3611,45 +3610,15 @@
       <div class="wrap">
         <div class="sectionHead reveal">
           <div>
-            <div class="eyebrow">✎ selected interface work</div>
-            <h2 class="title">Design Studio</h2>
-            <p class="lede">Four projects, each with its own little corner. Click a project to step inside and explore
-              it.</p>
+            <div class="eyebrow">✎ selected projects</div>
+            <h2 class="title">Projects Lab</h2>
+            <p class="lede">Two machine-learning systems and two product interfaces. Click a project to step inside and
+              explore it.</p>
           </div>
           <div class="sectionNumber">01</div>
         </div>
         <div class="designGrid">
-          <article class="designCard projectCard reveal delay1" data-project="verdura" tabindex="0" role="button"
-            aria-label="Open Verdura project">
-            <span class="tape"></span>
-            <div class="preview verduraCardPreview">
-              <div class="verduraThumbGlow"></div>
-              <div class="verduraThumbCopy"><span>VERDURA</span><small>plant shopping app</small></div>
-              <span class="cardOpenHint">open project ↗</span>
-            </div>
-            <div class="projectInfo">
-              <div class="projectType">Mobile UI/UX · Figma</div>
-              <h3 class="projectTitle">Verdura</h3>
-              <p class="projectDesc">Plant shopping, but a little less overwhelming.</p>
-            </div>
-          </article>
-
-          <article class="designCard projectCard reveal delay2" data-project="melo" tabindex="0" role="button"
-            aria-label="Open Melo project">
-            <span class="tape" style="background:var(--lav);left:auto;right:25px;transform:rotate(5deg)"></span>
-            <div class="preview meloCardPreview">
-              <div class="meloThumbGlow"></div>
-              <div class="meloThumbCopy"><span>MELO</span><small>a softer place to check in ♡</small></div>
-              <span class="cardOpenHint">open project ↗</span>
-            </div>
-            <div class="projectInfo">
-              <div class="projectType">Product UI/UX · Figma</div>
-              <h3 class="projectTitle">Melo</h3>
-              <p class="projectDesc">A playful space for checking in, journaling and letting things out.</p>
-            </div>
-          </article>
-
-          <article class="designCard projectCard reveal delay3" data-project="pediapredict" tabindex="0" role="button"
+          <article class="designCard projectCard reveal delay1" data-project="pediapredict" tabindex="0" role="button"
             aria-label="Open PediaPredict project">
             <span class="tape" style="background:var(--butter)"></span>
             <div class="preview pediaCardPreview">
@@ -3660,11 +3629,11 @@
             <div class="projectInfo">
               <div class="projectType">AI / ML · Python</div>
               <h3 class="projectTitle">PediaPredict</h3>
-              <p class="projectDesc">Where healthcare meets machine learning.</p>
+              <p class="projectDesc">Multimodal ML for personalized pediatric dose prediction.</p>
             </div>
           </article>
 
-          <article class="designCard projectCard reveal delay4" data-project="agropredict" tabindex="0" role="button"
+          <article class="designCard projectCard reveal delay2" data-project="agropredict" tabindex="0" role="button"
             aria-label="Open AgroPredict project">
             <span class="tape" style="background:var(--peach);left:auto;right:25px;transform:rotate(-4deg)"></span>
             <div class="preview agroCardPreview">
@@ -3675,7 +3644,37 @@
             <div class="projectInfo">
               <div class="projectType">AI / ML · Web</div>
               <h3 class="projectTitle">AgroPredict</h3>
-              <p class="projectDesc">Can data help farmers make better decisions?</p>
+              <p class="projectDesc">Price forecasting and decision support for farmers.</p>
+            </div>
+          </article>
+
+          <article class="designCard projectCard reveal delay3" data-project="verdura" tabindex="0" role="button"
+            aria-label="Open Verdura project">
+            <span class="tape"></span>
+            <div class="preview verduraCardPreview">
+              <div class="verduraThumbGlow"></div>
+              <div class="verduraThumbCopy"><span>VERDURA</span><small>plant shopping app</small></div>
+              <span class="cardOpenHint">open project ↗</span>
+            </div>
+            <div class="projectInfo">
+              <div class="projectType">UI/UX Case Study · Mobile · Figma</div>
+              <h3 class="projectTitle">Verdura</h3>
+              <p class="projectDesc">Mobile UI case study — design thinking behind the build.</p>
+            </div>
+          </article>
+
+          <article class="designCard projectCard reveal delay4" data-project="melo" tabindex="0" role="button"
+            aria-label="Open Melo project">
+            <span class="tape" style="background:var(--lav);left:auto;right:25px;transform:rotate(5deg)"></span>
+            <div class="preview meloCardPreview">
+              <div class="meloThumbGlow"></div>
+              <div class="meloThumbCopy"><span>MELO</span><small>a softer place to check in ♡</small></div>
+              <span class="cardOpenHint">open project ↗</span>
+            </div>
+            <div class="projectInfo">
+              <div class="projectType">UI/UX Case Study · Product · Figma</div>
+              <h3 class="projectTitle">Melo</h3>
+              <p class="projectDesc">Wellness app UX — flows, prototypes and visual systems.</p>
             </div>
           </article>
         </div>
@@ -3815,21 +3814,21 @@
       <div class="wrap">
         <div class="bridgeInner">
           <div class="reveal left">
-            <div class="eyebrow" style="color:#d9d0dc">✦ beyond the interface</div>
-            <h2>I don't just design the screen.<br>I like building it too.</h2>
-            <p style="margin-top:18px">My technical background lets me move from Figma into HTML, CSS and JavaScript,
-              while my AI/ML projects show that I can also work with Python, data and models. The point isn't to look
-              like two separate people — it's to show range.</p>
+            <div class="eyebrow" style="color:#d9d0dc">✦ from data to interface</div>
+            <h2>I train the model.<br>I also build the product around it.</h2>
+            <p style="margin-top:18px">My core is AI/ML — Python, data and models. On top of that I can design and build
+              the interface with Figma, HTML, CSS and JavaScript, so a model does not have to stay in a notebook. The
+              point is range: understand the problem, build the model, make it usable.</p>
           </div>
           <div class="bridgeCards">
-            <div class="bridgeCard reveal delay1"><b>Frontend</b><span>HTML · CSS · JavaScript · responsive UI</span>
-            </div>
-            <div class="bridgeCard reveal delay2"><b>UI / UX</b><span>Figma · wireframes · prototypes · visual
-                systems</span></div>
-            <div class="bridgeCard reveal delay3"><b>AI / ML</b><span>Python · scikit-learn · TensorFlow ·
+            <div class="bridgeCard reveal delay1"><b>AI / ML</b><span>Python · scikit-learn · TensorFlow ·
                 XGBoost</span></div>
-            <div class="bridgeCard reveal delay4"><b>Creative</b><span>Krita · digital illustration · animation ·
-                doodles</span></div>
+            <div class="bridgeCard reveal delay2"><b>Data &amp; Apps</b><span>Flask · Streamlit · Chart.js ·
+                model-to-product</span></div>
+            <div class="bridgeCard reveal delay3"><b>Frontend</b><span>HTML · CSS · JavaScript · responsive UI</span>
+            </div>
+            <div class="bridgeCard reveal delay4"><b>Design &amp; Art</b><span>Figma · prototypes · Krita ·
+                animation</span></div>
           </div>
         </div>
       </div>
@@ -3839,10 +3838,10 @@
       <div class="wrap">
         <div class="sectionHead reveal">
           <div>
-            <div class="eyebrow">✿ open when curious</div>
-            <h2 class="title">My Sketchbook</h2>
-            <p class="lede">The part of the portfolio where I don't have to behave like a product designer.
-              Illustrations, music-inspired art, characters, animation frames and experiments.</p>
+            <div class="eyebrow">✿ outside the notebook</div>
+            <h2 class="title">The Creative Side</h2>
+            <p class="lede">When I am not training models, I draw. Illustrations, mandalas, doodles and music-inspired
+              animation — the creative habit that keeps my interfaces human.</p>
           </div>
           <div class="sectionNumber">02</div>
         </div>
@@ -3887,26 +3886,26 @@
         <div class="sectionHead reveal">
           <div>
             <div class="eyebrow">♡ a little context</div>
-            <h2 class="title">About the person<br>behind the pixels</h2>
+            <h2 class="title">About me,<br>the engineer + artist</h2>
           </div>
           <div class="sectionNumber">03</div>
         </div>
         <div class="aboutGrid">
           <div class="aboutCard reveal left">
-            <div class="aboutIllustration">✎<br><span style="font:1.2rem var(--note)">design + code + art</span></div>
+            <div class="aboutIllustration">∑<br><span style="font:1.2rem var(--note)">models + code + art</span></div>
           </div>
           <div class="aboutText reveal right">
-            <p>I come from an <strong>AI/ML and technology background</strong>, but I keep getting pulled toward the
-              visual side of things — interfaces, interaction, typography, illustration and the little details that make
-              a product feel human.</p>
-            <p>So this portfolio isn't trying to force me into one box. It shows the overlap: <strong>design thinking,
-                frontend implementation, technical projects and art.</strong></p>
-            <p>I'm especially interested in roles where I can work close to the interface and keep learning through
-              making.</p>
-            <div class="toolBoard"><span class="tool">Figma</span><span class="tool">Krita</span><span
-                class="tool">HTML</span><span class="tool">CSS</span><span class="tool">JavaScript</span><span
-                class="tool">Python</span><span class="tool">Git</span><span class="tool">GitHub</span><span
-                class="tool">Streamlit</span></div>
+            <p>I am an <strong>AI/ML engineer</strong> who likes building end-to-end — from cleaning data and
+              training models in Python to presenting the results through a clear web interface.</p>
+            <p>My projects cover <strong>healthcare prediction and agricultural decision support</strong>, and my
+              design background (Figma, UI/UX, illustration) helps me turn model output into something people can
+              actually understand and use.</p>
+            <p>I am looking for AI/ML engineer roles where I can keep learning by building real, useful systems.</p>
+            <div class="toolBoard"><span class="tool">Python</span><span class="tool">scikit-learn</span><span
+                class="tool">TensorFlow</span><span class="tool">XGBoost</span><span class="tool">Flask</span><span
+                class="tool">Streamlit</span><span class="tool">Chart.js</span><span class="tool">HTML</span><span
+                class="tool">CSS</span><span class="tool">JavaScript</span><span class="tool">Git</span><span
+                class="tool">GitHub</span><span class="tool">Figma</span><span class="tool">Krita</span></div>
           </div>
         </div>
       </div>
@@ -3916,10 +3915,9 @@
       <div class="wrap">
         <div class="sectionHead reveal">
           <div>
-            <div class="eyebrow">✦ still in progress</div>
-            <h2 class="title">The studio keeps growing</h2>
-            <p class="lede">This portfolio isn't meant to stay frozen. I want it to evolve alongside the things I'm
-              learning, designing and drawing.</p>
+            <div class="eyebrow">✦ what's next</div>
+            <h2 class="title">The lab keeps growing</h2>
+            <p class="lede">I want this portfolio to grow with the models I build and the things I learn.</p>
           </div>
           <div class="sectionNumber">04</div>
         </div>
@@ -3932,9 +3930,9 @@
                 <div class="screenArt"></div>
                 <div class="screenUI"><span></span><span></span><span></span><span></span></div>
               </div>
-              <div class="laptopBase"></div><span class="laptopSticker ls1">Figma ✦</span><span
+              <div class="laptopBase"></div><span class="laptopSticker ls1">Python ✦</span><span
                 class="laptopSticker ls2">Krita ♡</span><span class="laptopSticker ls3">HTML · CSS</span><span
-                class="laptopSticker ls4">Python</span>
+                class="laptopSticker ls4">Figma</span>
             </div>
           </div>
           <div class="drawingBoard reveal right">
@@ -3945,15 +3943,16 @@
               <div class="stylus"></div>
             </div>
             <div class="future">
-              <h3>Future updates ✎</h3>
+              <h3>Next up ✎</h3>
               <ul>
-                <li>Finish and add my original profile character.</li>
-                <li>Replace placeholders with real Figma screens and artwork.</li>
-                <li>Add small interactive character moments around the site.</li>
-                <li>Add more animation experiments and new projects as I build them.</li>
+                <li>Add results, metrics and charts for the ML projects.</li>
+                <li>Add live demos where possible.</li>
+                <li>Write short breakdowns of how each model was built.</li>
+                <li>Keep adding art and animation experiments.</li>
               </ul>
             </div>
-            <div class="suggestBox"><strong>Have an idea for this little studio?</strong><span>If something on this site
+            <div class="suggestBox"><strong>Have feedback on this portfolio or a project idea?</strong><span>If
+                something on this site
                 could be more useful, playful or interesting, I'd genuinely love to hear your suggestion.</span></div>
           </div>
         </div>
@@ -3992,13 +3991,14 @@
     <footer id="contact">
       <div class="wrap">
         <div class="eyebrow" style="color:#d9d0dc">✦ last page</div>
-        <h2 class="footerTitle">Let's make<br>something good.</h2>
-        <p class="footerSub">A good interface, a little code, and maybe a doodle or two.</p>
+        <h2 class="footerTitle">Let's build something<br>intelligent.</h2>
+        <p class="footerSub">Models, a little code, a clean interface — and maybe a doodle or two.</p>
         <div class="leaveMessage">
           <div class="messageCopy">
             <div class="messageEyebrow">💌 leave a message</div>
             <h3>Tell me what you think.</h3>
-            <p>Found something you liked? Have an idea for the site? Want to say hello? Leave me a little note and it
+            <p>Found something you liked? Have an opportunity or an idea? Want to say hello? Leave me a little note and
+              it
               will open an email addressed to me.</p>
           </div>
           <form id="messageForm" class="messageForm">
@@ -4021,7 +4021,7 @@
             rel="noopener">Instagram / Art ↗</a>
         </div>
         <div class="signature">Rama Lekshmi</div>
-        <div class="copyright">Made with pencil, pixels & code · © 2026 Rama Lekshmi</div>
+        <div class="copyright">Made with Python, pixels & pencil · © 2026 Rama Lekshmi</div>
       </div>
     </footer>
   </main>
@@ -4079,15 +4079,8 @@
     let lastScrollY = window.scrollY;
     let scrollDirection = 'down';
 
-    if (!isMobile) {
-      const io = new IntersectionObserver(entries => entries.forEach(e => {
-        if (e.isIntersecting) {
-          e.target.classList.add('on');
-          io.unobserve(e.target);
-        }
-      }), { threshold: .12 });
-      requestAnimationFrame(() => revealEls.forEach(el => io.observe(el)));
-    } else {
+    // Desktop and mobile now both replay reveals in both scroll directions.
+    {
       const state = new WeakMap();
 
       function enterReveal(el) {
@@ -4157,10 +4150,10 @@
     const projectModal = document.getElementById('projectModal'), projectModalTitle = document.getElementById('projectModalTitle'), projectModalType = document.getElementById('projectModalType'), projectModalTagline = document.getElementById('projectModalTagline'), projectModalMeta = document.getElementById('projectModalMeta'), projectSheetCount = document.getElementById('projectSheetCount'), projectScreensArea = document.getElementById('projectScreensArea'), projectDetails = document.getElementById('projectDetails');
     const projectSheet = document.querySelector('.projectSheet');
     const projectData = {
-      verdura: { title: 'Verdura', type: 'Mobile UI/UX · Figma', tagline: 'Plant shopping, but a little less overwhelming.', meta: ['UI Design', 'Prototype', 'Mobile'], intro: 'Verdura is a mobile shopping concept designed around simple discovery, clear plant information and a straightforward checkout experience.', goal: 'What was I trying to solve?', goalText: 'Create a plant-shopping flow that feels easy to browse and easy to understand, from the first screen through order confirmation.', decisions: ['Keep the browsing flow clear and focused.', 'Present plant details without crowding the screen.', 'Make cart, payment and confirmation feel like one continuous journey.'], figma: 'https://www.figma.com/proto/vcPD9z1CMAXZouDRczVTxj/Verdura?node-id=1-2&starting-point-node-id=1%3A2&t=HFTd14CtCd02fQkM-1', screens: ['assets/verdura/verdura-01.png', 'assets/verdura/verdura-02.png', 'assets/verdura/verdura-03.png', 'assets/verdura/verdura-04.png', 'assets/verdura/verdura-05.png', 'assets/verdura/verdura-06.png'], labels: ['Home', 'Menu', 'Plant Details', 'Cart', 'Payment', 'Order Confirmation'] },
-      melo: { title: 'Melo', type: 'Product UI/UX · Figma', tagline: 'A little softer, a little more human.', meta: ['UX Flow', 'UI Design', 'Prototype'], intro: 'Melo is a playful mental-wellness concept designed around emotional check-ins, journaling, drawing and supportive moments.', goal: 'What was I trying to create?', goalText: 'A mental-wellness experience that feels approachable and expressive rather than clinical or intimidating.', decisions: ['Keep the experience colorful, friendly and low-pressure.', 'Use small expressive interactions to make checking in feel easier.', 'Connect the different moments into one gentle, consistent flow.'], figma: 'https://www.figma.com/proto/YprEm5dicmxpQrsCE1O4vL/Melo?node-id=42-129&starting-point-node-id=42%3A129&t=CuP21R75rC5W1VvO-1', screens: ['assets/melo/melo-01.png', 'assets/melo/melo-02.png', 'assets/melo/melo-03.png', 'assets/melo/melo-04.png', 'assets/melo/melo-05.png', 'assets/melo/melo-06.png', 'assets/melo/melo-07.png', 'assets/melo/melo-08.png', 'assets/melo/melo-09.png', 'assets/melo/melo-10.png', 'assets/melo/melo-11.png'], labels: ['Home', 'Mood Check-in', 'Mood Result', 'Journal', 'Journal Entry', 'Drawing', 'Support', 'Resources', 'Profile', 'Settings', 'Final Screen'] },
-      pediapredict: { title: 'PediaPredict', type: 'AI / ML · Python · Technical Project', tagline: 'Where healthcare meets machine learning.', meta: ['Python', 'Machine Learning', 'XGBoost'], intro: 'A technical project exploring personalized pediatric dose prediction using clinical and multimodal data.', goal: 'What was I exploring?', goalText: 'How can patient-related information be combined with machine-learning models to support more personalized pediatric dose prediction?', decisions: ['Clinical/tabular features are part of the prediction pipeline.', 'Machine-learning based prediction is used for the dose estimation task.', 'The project focuses on the multimodal idea rather than pretending this is a deployed medical product.'], screens: ['assets/pediapredict/pedia-01.png', 'assets/pediapredict/pedia-02.png', 'assets/pediapredict/pedia-03.png'], labels: ['Overview', 'Model / Results', 'Project Details'], github: 'https://github.com/Rama-Lekshmi/Personalized-Pediatric-Drug-Dosage-Prediction-backend-.git', tech: 'Python · XGBoost · Machine Learning' },
-      agropredict: { title: 'AgroPredict', type: 'AI / ML · Web · Frontend', tagline: 'Can data help farmers make better decisions?', meta: ['Python', 'Flask', 'Chart.js'], intro: 'An agricultural market decision-support project exploring price forecasting, market signals and profit-oriented crop decisions.', goal: 'What was I exploring?', goalText: 'How can historical agricultural price data be turned into a more understandable decision-support experience?', decisions: ['Forecasting is presented through a web interface.', 'Market signals are surfaced in a more readable way.', 'The frontend focuses on making model output easier to interpret.'], screens: ['assets/agropredict/agro-01.png', 'assets/agropredict/agro-02.png', 'assets/agropredict/agro-03.png', 'assets/agropredict/agro-04.png'], labels: ['Overview', 'Forecasting', 'Market Signals', 'Decision Support'], github: 'https://github.com/Rama-Lekshmi/AI-Driven-Agricultural-Market-Decision-Support-and-Profit-Optimization-System.git', tech: 'Python · Flask · Chart.js' }
+      verdura: { title: 'Verdura', type: 'UI/UX Case Study · Mobile · Figma', tagline: 'Plant shopping, but a little less overwhelming.', meta: ['UI Design', 'Prototype', 'Mobile'], intro: 'Verdura is a mobile shopping concept designed around simple discovery, clear plant information and a straightforward checkout experience.', goal: 'What was I trying to solve?', goalText: 'Create a plant-shopping flow that feels easy to browse and easy to understand, from the first screen through order confirmation.', decisions: ['Keep the browsing flow clear and focused.', 'Present plant details without crowding the screen.', 'Make cart, payment and confirmation feel like one continuous journey.'], figma: 'https://www.figma.com/proto/vcPD9z1CMAXZouDRczVTxj/Verdura?node-id=1-2&starting-point-node-id=1%3A2&t=HFTd14CtCd02fQkM-1', screens: ['assets/verdura/verdura-01.png', 'assets/verdura/verdura-02.png', 'assets/verdura/verdura-03.png', 'assets/verdura/verdura-04.png', 'assets/verdura/verdura-05.png', 'assets/verdura/verdura-06.png'], labels: ['Home', 'Menu', 'Plant Details', 'Cart', 'Payment', 'Order Confirmation'] },
+      melo: { title: 'Melo', type: 'UI/UX Case Study · Product · Figma', tagline: 'A little softer, a little more human.', meta: ['UX Flow', 'UI Design', 'Prototype'], intro: 'Melo is a playful mental-wellness concept designed around emotional check-ins, journaling, drawing and supportive moments.', goal: 'What was I trying to create?', goalText: 'A mental-wellness experience that feels approachable and expressive rather than clinical or intimidating.', decisions: ['Keep the experience colorful, friendly and low-pressure.', 'Use small expressive interactions to make checking in feel easier.', 'Connect the different moments into one gentle, consistent flow.'], figma: 'https://www.figma.com/proto/YprEm5dicmxpQrsCE1O4vL/Melo?node-id=42-129&starting-point-node-id=42%3A129&t=CuP21R75rC5W1VvO-1', screens: ['assets/melo/melo-01.png', 'assets/melo/melo-02.png', 'assets/melo/melo-03.png', 'assets/melo/melo-04.png', 'assets/melo/melo-05.png', 'assets/melo/melo-06.png', 'assets/melo/melo-07.png', 'assets/melo/melo-08.png', 'assets/melo/melo-09.png', 'assets/melo/melo-10.png', 'assets/melo/melo-11.png'], labels: ['Home', 'Mood Check-in', 'Mood Result', 'Journal', 'Journal Entry', 'Drawing', 'Support', 'Resources', 'Profile', 'Settings', 'Final Screen'] },
+      pediapredict: { title: 'PediaPredict', type: 'AI / ML · Python · Technical Project', tagline: 'Where healthcare meets machine learning.', meta: ['Python', 'Machine Learning', 'XGBoost'], intro: 'A machine-learning project on personalized pediatric dose prediction, using clinical and multimodal data.', goal: 'What problem was I exploring?', goalText: 'How can patient-related information be combined with machine-learning models to support more personalized pediatric dose prediction?', decisions: ['Framed pediatric dose estimation as a supervised prediction problem on clinical/tabular features.', 'Used XGBoost-based models for the dose estimation task.', 'Kept the scope honest: a multimodal research exploration, not a deployed medical product.'], screens: ['assets/pediapredict/pedia-01.png', 'assets/pediapredict/pedia-02.png', 'assets/pediapredict/pedia-03.png'], labels: ['Overview', 'Model / Results', 'Project Details'], github: 'https://github.com/Rama-Lekshmi/Personalized-Pediatric-Drug-Dosage-Prediction-backend-.git', tech: 'Python · XGBoost · Machine Learning' },
+      agropredict: { title: 'AgroPredict', type: 'AI / ML · Web · Frontend', tagline: 'Can data help farmers make better decisions?', meta: ['Python', 'Flask', 'Chart.js'], intro: 'A machine-learning decision-support system for agricultural markets: price forecasting, market signals and profit-oriented crop decisions.', goal: 'What problem was I exploring?', goalText: 'How can historical agricultural price data be turned into a more understandable decision-support experience?', decisions: ['Turned historical price data into forecasts for crop-market decisions.', 'Surfaced market signals and profit-oriented suggestions from the model output.', 'Built a Flask + Chart.js interface so non-technical users can read the results.'], screens: ['assets/agropredict/agro-01.png', 'assets/agropredict/agro-02.png', 'assets/agropredict/agro-03.png', 'assets/agropredict/agro-04.png'], labels: ['Overview', 'Forecasting', 'Market Signals', 'Decision Support'], github: 'https://github.com/Rama-Lekshmi/AI-Driven-Agricultural-Market-Decision-Support-and-Profit-Optimization-System.git', tech: 'Python · Flask · Chart.js' }
     };
     let activeProject = null, activeScreen = 0, flipBusy = false, openingCard = null;
     function openProject(key, sourceCard) {
